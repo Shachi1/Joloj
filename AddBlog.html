@@ -8,16 +8,6 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
     <title>Joloj</title>
-	
-	<script>
-	function validateForm() {
-	  var x = document.forms["rForm"]["fname"].value;
-	  if (x == "") {
-		alert("Please fill out everything");
-		return false;
-	  }
-	}
-	</script>
 
 </head>
 
@@ -27,48 +17,57 @@
 <img src="images/logo.png" width="80" height="60">
   
   <a href="Signup.html"><u>Signup</u></a>
-  <a class="active" href="Login.html"><u>Login</u></a>
+  <a href="Login.html"><u>Login</u></a>
   <a href="AboutUs.html">About Us</a>
   <a href="Doctor.html">Fish Doctor</a>
-  <a href="Blog.html">Blog</a>
+  <a class="active" href="Blog.html">Blog</a>
   <a href="Dashboard.html">Dashboard</a>
   <a href="Home.html">Home</a>
 </div>
 
-<center> <div>
-		<div>
-		  <br><br><br><br><br><br><br>
-		</div>
-		
-	<div class="cards"style="color:white;font-size:30px">
-	
+<script>
+	function validateForm() {
+	  var x = document.forms["rForm"]["fname"].value;
+	  if (x == "") {
+		alert("Please fill out everything");
+		return false;
+	  }
+	}
+</script>
+<br><br>
+<center><div class="cards"style="color:white;font-size:30px">
+		<br>
+		<h1>Add Your Blog</h1>
 			<form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
 			<br>
 			<div class="row"style="width:50%">
 			<div class="col-md-6">
-			  <label for="name">Username:</label><br>
+			  <label for="name">Tittle:</label><br>
 			  </div>
 			<div class="col-md-6">  
-			  <input style="width:500px" type="text" id="name" name="name" value=""><br>
+			  <input style="width:500px" type="text" id="tittle" name="tittle" value=""><br>
 			  </div>
 			  </div><br>
 			  
 			  <div class="row"style="width:50%">
 			<div class="col-md-6">
-			  <label for="password">Password:</label><br>
+			  <label for="name">Author:</label><br>
 			  </div>
 			<div class="col-md-6">  
-			  <input style="width:500px" type="text" id="password" name="password" value=""><br><br>
+			  <input style="width:500px" type="text" id="writer" name="writer" value=""><br><br>
 			  </div>
 			  </div><br>
+			
+			  <div class="col-md-6">
+				<label for="name">Blog:</label><br>
+				</div>
+			  <div class="col-md-6">  
+				<input style="width:500px;height:500px" type="text" id="writer" name="writer" value=""><br><br>
+				</div>
 			  <input style="width:200px" type="submit" value="Submit">
 			 
-			</form> 	
-			 <br><br>
-	
-	</div>
-		<br><br><br><br>
-</div>		
+			</form> <br>  	
+	</div>	
 		
 	<div class="main-footer">
         <img src="images/footer.png">
