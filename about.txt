@@ -1,0 +1,29 @@
+Introduction:
+ 
+The more we are being educated and urbanised the more the number of traditional farmers is decreasing. But the demand of agro-food is increasing with the increase of population. But it is also a matter of hope that educated people are getting interested in Argo-farming business nowadays. With this the opportunity to develop an Agro-tech product is rising.  
+ 
+ 
+Motivation:
+ 
+We live in a world of IOT technology where data rules. But it’s frustrating to see several thousands of dollars worth of fish die every year due to the lack of proper surveillance. Therefore, we wanted to create a system that will keep the hatchery water under strict observation and notify the fish farmer before any mishap takes place.
+ 
+ 
+Problem:
+
+In fish farming, maintenance of water quality is very crucial. Especially in controlled systems like Biofloc and Aquaponics it is required to collect and manage data for taking necessary action in time. Unfortunately, there doesn’t exist any convenient and well designed technological solution for this matter. As a result farmers remain unnotified at the exact time when a huge number of fish die due to sudden increase or decrease of a water component. In short the farmers -
+ 
+· faces difficulties to get the right data at the right time
+· lacks the knowledge to make a decision based on gathered data
+· lacks the expertise to carry out the decision or take action
+ 
+ 
+Solution:
+ 
+We aim to solve the above stated problems. Our platform will display a dashboard where live data from the fish hatchery will be shown. We’ll collect the data using an IOT device and behind all these a cloud server will be running. Our IOT device in the water will provide the following data -
+· pH
+· Temperature
+· TDS
+· Dissolved Oxygen
+· Turbidity
+ 
+Our System will notify the user what action needs to be taken by analyzing this data. We will provide flexibility to the user in case of buying the device. A user (with or without device) can search her query in our knowledge box where we will provide necessary tutorials and blogs. He/she will also be able to contact the nearby fisheries consultant through our platform if anything out of ordinary occurs.

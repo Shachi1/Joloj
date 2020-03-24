@@ -1,0 +1,70 @@
+.navbar-nav{
+    margin: 0 auto;
+	float: right;
+}
+.navbar{
+    background-color: #fff;
+}
+.my-nav{
+    background-color: #fff;
+	float: right;
+}
+
+.font-weight-bold.text-center{
+	margin-top: 5px;
+}
+
+.button-all-coll {
+	font-size: 24px;
+	margin-top: 10px;
+	}
+
+.product_img{
+	height: 100px;
+	width: 100px;
+}
+.cards{
+    background-color: #f7f7f9;
+	height: 650px;
+}
+.cards .card{
+    margin: 0px 0px 0px 0px;
+}
+.cards .card-product{
+    padding: 20px;
+	height: 600px;
+	background-image: url("../image/flower1B.png");
+	background-size: 100% 100%;
+}
+.cards .card-detail{
+    padding: 20px;
+	height: 600px;
+}
+.card-text{
+    color: grey;
+	
+}
+
+.footer_content{
+    margin:0px;
+}
+.footer_content img{
+    width: 150px;
+    height: 150px;
+}
+
+.divide_content
+{
+	height: 400px;
+    padding: 40px;
+}
+
+.main-footer{
+    margin-top: 10px;
+    background-color: rgb(49, 33, 33);
+    color: #fff;
+    padding: 40px;
+}
+.main-footer p{
+    margin:0px;
+}

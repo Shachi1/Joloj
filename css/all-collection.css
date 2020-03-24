@@ -1,0 +1,102 @@
+
+.headLine
+{
+	font:80px;
+	text-align: center;
+
+}
+.secondHead
+{
+	font: 20px;
+	text-align: left;
+	padding-left: 30px;
+}
+
+body
+{
+	background-color: #f0f0f0;
+}
+
+img
+{
+	width: 100%;
+	height: auto;
+}
+
+p
+{
+	font: 20px;
+	font-style: italic;
+	text-align: center;
+}
+
+.div2{
+
+	background-color: #e6e6e6;
+	float: left;
+	margin-left: 30px;
+	margin-right: 30px;
+	margin-bottom: 10px;
+	margin-top: 10px; 
+}
+
+.div3
+{
+	float: right;
+	margin-top: 17px;
+	margin-right: 30px;
+}
+
+.mainText
+{
+	padding-left: 30px;
+	font:6px;
+	font-style: normal;
+	text-align: left;
+}
+
+
+.openNow
+{
+	float: left;
+	padding-left: 30px;
+	margin-bottom: 10px;
+	font-size: 13px;
+	color:green;
+}
+.pro_detail_button
+{
+	background-color:  #e6e6e6;
+	border: none;
+    color: green;
+	font-size: 15px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.price {
+  color: green;
+  font-size: 20px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: green;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
