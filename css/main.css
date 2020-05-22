@@ -148,7 +148,21 @@ td, th {
 tr:nth-child(even) {
   background-color: black;
 }
-
+.all-button {
+  background-color: #23233d; /* Green */
+  border-color: green;
+  color: white;
+  width: 200px;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  margin: 4px 2px;
+  border-color: #818181;
+  border-radius: 12px;
+  cursor: pointer;
+}
 
 .font-weight-bold.text-center{
 	margin-top: 5px;
@@ -175,7 +189,7 @@ tr:nth-child(even) {
 
 .cards{
   background: rgba(14,56,83,0.7);
-  width:80%;
+  width:70%;
 }
 .cards .card{
     margin: 40px 0px 100px 0px;
