@@ -11,6 +11,7 @@
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 4;
 }
 .topnav a {
   float: right;
@@ -173,8 +174,8 @@ tr:nth-child(even) {
 
 
 .cards{
-	background-color:#0E3853;
-	width:80%;
+  background: rgba(14,56,83,0.7);
+  width:80%;
 }
 .cards .card{
     margin: 40px 0px 100px 0px;
