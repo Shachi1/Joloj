@@ -11,10 +11,36 @@
     color: white;
 }
 nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
-    color: rgb(180, 202, 243);
+    color: #9BE1EF;
 }
 .navbar-light .navbar-brand {
     color: white;
 }
-.nav-link:hover{  color: #ecf78b; }
+.nav-link:hover{  color: #9BE1EF; }
+.navbar-toggler {
+    background-color: #9BE1EF;
+}
+.slyBlue-bg{
+    background-color: #9BE1EF;
+}
+.price{
+    color: #0B0F35;
+}
 
+.carousel-item{
+    padding: 20px 40px;
+}
+
+.buy-now-button{
+    background-image: linear-gradient(to bottom, #0b0f3570 0%, #0B0F35 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 9px 25px;
+    cursor: pointer;
+}
+
+.container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
+    padding-right: 0px;
+    padding-left: 0px;
+}
