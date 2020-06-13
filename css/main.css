@@ -1,3 +1,4 @@
+/* navbar */
 .navbar{ background:#0B0F35;}
 .navbar-collapse{ justify-content: flex-end;}
 .nav-link , .navbar-brand{ color: #f4f4f4; cursor: pointer;}
@@ -20,18 +21,38 @@ nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
 .navbar-toggler {
     background-color: #9BE1EF;
 }
-.slyBlue-bg{
-    background-color: #9BE1EF;
-}
-.price{
-    color: #0B0F35;
-}
+
+
+
+/* Slider */
 
 .carousel-item{
     padding: 20px 40px;
 }
 
-.buy-now-button{
+
+
+.container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+
+/* Reusable contents */
+
+.slyBlue-bg{
+    background-color: #9BE1EF;
+}
+
+body{
+    background-color: rgb(228, 245, 255);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.water-color{
+    color: #0B0F35;
+}
+.custom-btn{
     background-image: linear-gradient(to bottom, #0b0f3570 0%, #0B0F35 100%);
     color: #fff;
     border: none;
@@ -40,7 +61,18 @@ nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
     cursor: pointer;
 }
 
-.container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
-    padding-right: 0px;
-    padding-left: 0px;
+.header1{
+    color: #0B0F35;
+    font-size: 45px;
+    font-weight: 500;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.txt-box{
+    color: #0B0F35;
+    font-size: 20px;
+    font-weight: 350;
+    margin: 50px 20%;
+    text-align: center;
 }
