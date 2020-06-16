@@ -82,16 +82,7 @@ body{
     text-align: center;
 }
 
-.problem-list{
-    margin: 0 25%;
-    list-style: none;
-    font-size: 25px;
-
-}
-.problem-list li{
-    margin:20px 0;
-
-}
+/* Why and How sec */
 .card-body ion-icon{
     height: 40px;
     width: 40px;
@@ -106,3 +97,51 @@ body{
     padding-left: 50px;
     padding-right: 50px;
 }
+
+/* Team */
+#team{
+    padding: 60px;
+}
+
+
+.container {
+    background-color: white;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .2);
+    margin-bottom: 50px
+}
+
+.title {
+    font-size: 25px;
+    font-weight: 100
+}
+
+.icon {
+    position: relative;
+    bottom: 11px
+}
+
+.mt-100 {
+    margin-top: 100px
+}
+
+.profile img {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%
+}
+
+.card {
+    border-radius: 15px;
+    margin-left: 30px;
+    margin-right: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .2)
+}
+
+#team .card-body {
+    position: relative;
+    bottom: 35px
+}
+
+
