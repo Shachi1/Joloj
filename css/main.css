@@ -14,6 +14,9 @@
 nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
     color: #9BE1EF;
 }
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    color: #9BE1EF;
+}
 .navbar-light .navbar-brand {
     color: white;
 }
@@ -35,6 +38,7 @@ nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
 .container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
     padding-right: 0px;
     padding-left: 0px;
+    padding-bottom: 70px;
 }
 
 
@@ -45,7 +49,7 @@ nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
 }
 
 body{
-    background-color: rgb(228, 245, 255);
+    /* background-color: rgb(228, 245, 255); */
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -59,20 +63,46 @@ body{
     border-radius: 8px;
     padding: 9px 25px;
     cursor: pointer;
+    margin: 5px;
 }
 
 .header1{
     color: #0B0F35;
     font-size: 45px;
     font-weight: 500;
-    margin: 20px 0;
+    padding: 30px 0;
     text-align: center;
 }
 
 .txt-box{
     color: #0B0F35;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 350;
-    margin: 50px 20%;
+    margin: 30px 20%;
     text-align: center;
+}
+
+.problem-list{
+    margin: 0 25%;
+    list-style: none;
+    font-size: 25px;
+
+}
+.problem-list li{
+    margin:20px 0;
+
+}
+.card-body ion-icon{
+    height: 40px;
+    width: 40px;
+    margin-right: 5px;
+    margin-bottom: 7px;
+}
+.card-body{
+    text-align: center;
+}
+.container-fluid .solution-sec{
+    background-color: rgb(228, 245, 255);
+    padding-left: 50px;
+    padding-right: 50px;
 }
