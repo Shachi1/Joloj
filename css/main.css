@@ -38,7 +38,7 @@ nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
 .container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
     padding-right: 0px;
     padding-left: 0px;
-    padding-bottom: 70px;
+    
 }
 
 
@@ -107,8 +107,8 @@ body{
 .container {
     background-color: white;
     text-align: center;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, .2);
+    /* border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .2); */
     margin-bottom: 50px
 }
 
@@ -145,3 +145,18 @@ body{
 }
 
 
+.dashboard{
+    margin: 100px;
+}
+/* 
+.container-fluid .menu{
+    background-color: black;
+} */
+.container-fluid.menu{
+    background-color: #0B0F35;
+}
+
+.container{
+    padding-right: 0px;
+    padding-left: 0px;
+}
