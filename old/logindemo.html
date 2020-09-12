@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+    <!-- <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
-
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -49,63 +50,69 @@
                 </div>
             </nav>
         </div>
-    
+
     </div>
 
-    <!-- select your zone -->
-    <div class="container">
-        <div class="row">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label><h4>Your district: </h4></label>
-                </div>
-                <select class="custom-select" id="inputGroupSelect01">
-                    <option selected>Choose...</option>
-                    <option value="1">Dhaka</option>
-                    <option value="2">Mymensigh</option>
-                    <option value="3">Sirajgonj</option>
-                </select>
+    <!-- login form -->
+    <div id="logreg-forms">
+        <form class="form-signin">
+            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
+            <div class="social-login">
+                <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Sign
+                        in
+                        with Facebook</span> </button>
+                <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Sign
+                        in
+                        with Google+</span> </button>
             </div>
-        </div>
-        <!-- <div class="row">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label>
-                        <h4>Your Upazilla: </h4>
-                    </label>
-                </div>
-                <select class="custom-select" id="inputGroupSelect01">
-                    <option selected>Choose...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
+            <p style="text-align:center"> OR </p>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required=""
+                autofocus="">
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+
+            <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
+            <a href="#" id="forgot_pswd">Forgot password?</a>
+            <hr>
+            <!-- <p>Don't have an account!</p>  -->
+            <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i>
+                Sign up
+                New Account</button>
+        </form>
+
+        <form action="/reset/password/" class="form-reset">
+            <input type="email" id="resetEmail" class="form-control" placeholder="Email address" required=""
+                autofocus="">
+            <button class="btn btn-primary btn-block" type="submit">Reset Password</button>
+            <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
+        </form>
+
+        <form action="/signup/" class="form-signup">
+            <div class="social-login">
+                <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Sign
+                        up
+                        with Facebook</span> </button>
             </div>
-        </div> -->
+            <div class="social-login">
+                <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Sign
+                        up
+                        with Google+</span> </button>
+            </div>
+
+            <p style="text-align:center">OR</p>
+
+            <input type="text" id="user-name" class="form-control" placeholder="Full name" required="" autofocus="">
+            <input type="email" id="user-email" class="form-control" placeholder="Email address" required autofocus="">
+            <input type="password" id="user-pass" class="form-control" placeholder="Password" required autofocus="">
+            <input type="password" id="user-repeatpass" class="form-control" placeholder="Repeat Password" required
+                autofocus="">
+
+            <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Sign Up</button>
+            <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Back</a>
+        </form>
+        <br>
 
     </div>
     
-
-
-    <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
-        <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
-    </div>
-
-    <!-- footer -->
     <div id="footer" class="container-fluid">
         <div class="container">
             <div class="row">
@@ -116,7 +123,7 @@
                         <!-- <li><a href="#forum">Post your problems</a></li> -->
                         <li><a href="#">Find nearby fish doctor</a></li>
                         <li><a href="#">Tutorials</a></li>
-    
+
                     </ul>
                 </div>
                 <div class="col">
@@ -124,7 +131,7 @@
                 </div>
                 <div class="col">
                     <h5 class="font-weight-bold text-uppercase text-left">Get connected</h5>
-    
+
                     <ul class="get-connected text-left">
                         <li>
                             <p>
@@ -138,7 +145,7 @@
                             <p>
                                 <i class="fab fa-facebook-square  mr-3"></i> facebook.com/Joloj</p>
                         </li>
-    
+
                     </ul>
                 </div>
             </div>
@@ -146,20 +153,14 @@
     </div>
     </div>
 
-
-
-    <script src="/js/Dashboard.js"></script>
-    <!-- <script src="bootstrap/js/bootstrap.min.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+        crossorigin="anonymous"></script> -->
+    
+    <!-- <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script> -->
 </body>
 
 </html>
