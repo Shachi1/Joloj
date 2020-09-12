@@ -1,7 +1,8 @@
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const MongoClient = require('mongodb').MongoClient;
+// const MongoClient = require('mongodb').MongoClient;
+const mongoose=require('mongoose')
 require('dotenv').config()
 
 
@@ -18,46 +19,46 @@ app.use(bodyParser.json())
 const dbUser = process.env.DB_USER
 const pass = process.env.DB_PASS
 const uri = `mongodb+srv://${dbUser}:${pass}@cluster0.evhow.mongodb.net/joloj?retryWrites=true&w=majority`;
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
-app.get('/get', (req, res) => {
-    client.connect(err => {
-        const collection = client.db("joloj").collection("dashboard");
-        collection.find().toArray((err, documents) => {
-            if (err) {
-                console.log(err)
-                res.status(500).send({ message: err })
-            }
-            else {
-                res.send(documents)
-            }
-        })
-        //client.close()
-    })
-})
+// app.get('/get', (req, res) => {
+//     client.connect(err => {
+//         const collection = client.db("joloj").collection("dashboard");
+//         collection.find().toArray((err, documents) => {
+//             if (err) {
+//                 console.log(err)
+//                 res.status(500).send({ message: err })
+//             }
+//             else {
+//                 res.send(documents)
+//             }
+//         })
+//         //client.close()
+//     })
+// })
 
-app.post('/post', (req, res) => {
-    // console.log(req.body)
-    //ekhane db te pathano hobe. then db theke id sohokare data ta ekhane send kora hobe
-    const product = req.body
-    //console.log(product)
-    client.connect(err => {
-        const collection = client.db("joloj").collection("dashboard");
-        collection.insertOne({ product }, (err, result) => {
-            if (err) {
-                console.log(err)
-                res.status(500).send({ message: err })
-            }
-            else {
-                res.send(result.ops[0])
-            }
+// app.post('/post', (req, res) => {
+//     // console.log(req.body)
+//     //ekhane db te pathano hobe. then db theke id sohokare data ta ekhane send kora hobe
+//     const product = req.body
+//     //console.log(product)
+//     client.connect(err => {
+//         const collection = client.db("joloj").collection("dashboard");
+//         collection.insertOne({ product }, (err, result) => {
+//             if (err) {
+//                 console.log(err)
+//                 res.status(500).send({ message: err })
+//             }
+//             else {
+//                 res.send(result.ops[0])
+//             }
 
 
-        })
-    })
-    // client.close();
-});
+//         })
+//     })
+//     // client.close();
+// });
 
 
 
@@ -85,6 +86,15 @@ app.get('/', (req, res) => {
 })
 
 const PORT = process.env.PORT || 4200
-app.listen(PORT, () => {
-    console.log(`SERVER IS RUNNING ON PORT ${PORT}`)
-})
+mongoose
+    .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`SERVER IS RUNNING ON PORT ${PORT}`)
+        })
+    })
+    .catch((e) => {
+        console.log(e)
+    })
+
+
