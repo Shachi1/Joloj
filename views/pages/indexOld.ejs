@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=WW">
+    <title>Ejs</title>
+</head>
+
+<body>
+    <%- include('../partials/nav.ejs')  %> 
+    <h1> head</h1>
+    <p>This is a dummy text. This is a dummy text. This is a dummy text. This is a dummy text. This is a dummy text.
+        This is a dummy text. </p>
+        <%= new Date().toString() %>
+        <% if (post.published) { %>
+            <h3>Title: <%= post.tile %></h3>
+            <p>Body: <%= post.body %></p>
+        <% } else { %>
+            <p>Post is not yet published!</p>
+        <% } %>
+        <ul>
+        <% for(let p of posts){ %>
+            <li>
+                <%= p.title %> By <%= p.author  %>  
+            </li>
+        <% } %>
+        </ul>
+
+</body>
+
+</html>
