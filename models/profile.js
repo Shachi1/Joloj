@@ -8,7 +8,7 @@ const post = require('./post')
 const profileSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
-        ref: User,
+        ref: user,
         required: true
     },
     title: {
