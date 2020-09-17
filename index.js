@@ -7,6 +7,8 @@ require('dotenv').config()
 
 // import routes
 const authRoutes = require('./routes/authRoute')
+// import playgrounde
+//const validatorRoutes = require('./playground/validator')
 
 const app = express()
 
@@ -24,6 +26,7 @@ const middleware = [
 app.use(middleware)
 app.use(cors())
 app.use(authRoutes)
+//app.use('/playground', validatorRoutes)
 // app.use(bodyParser.json())
 
 const dbUser = 'dbUser'
