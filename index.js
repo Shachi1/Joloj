@@ -5,6 +5,9 @@ const morgan = require('morgan')
 const mongoose=require('mongoose')
 require('dotenv').config()
 
+// import routes
+const authRoutes = require('./routes/authRoute')
+
 const app = express()
 
 app.set('view engine', 'ejs')
@@ -20,6 +23,7 @@ const middleware = [
 ]
 app.use(middleware)
 app.use(cors())
+app.use(authRoutes)
 // app.use(bodyParser.json())
 
 const dbUser = 'dbUser'
@@ -43,11 +47,16 @@ app.get('/fish-doctor', (req, res) => {
 app.get('/knowledge-box', (req, res) => {
     res.render('pages/knowledge-box.ejs', { title: 'Knowledge Box' })
 })
-app.get('/login', (req, res) => {
-    res.render('pages/login.ejs', { title: 'Log in' })
-})
+// app.get('/login', (req, res) => {
+//     res.render('pages/login.ejs', { title: 'Log in' })
+// })
+// app.get('/signup', (req, res) => {
+//     res.render('pages/signup.ejs', { title: 'Sign up' })
+// })
 app.get('/', (req, res) => {
     res.render('pages/index.ejs',{title:'Home'})
+
+
     // res.json({
     //     message:"Hello"
     // })
