@@ -132,7 +132,8 @@ p{
     text-align: center;
     /* border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, .2); */
-    margin-bottom:50px;
+    /* margin-bottom:50px; */
+    
 }
 
 .title {
@@ -184,7 +185,7 @@ p{
 } */
 #menu{
     background-color: #0B0F35;
-    
+    margin-bottom: 50px;
     
 }
 
