@@ -1,8 +1,8 @@
 const express = require('express')
 const cors = require('cors')
-// const bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 const morgan = require('morgan')
-// const mongoose=require('mongoose')
+const mongoose=require('mongoose')
 require('dotenv').config()
 
 const app = express()
@@ -22,12 +22,12 @@ app.use(middleware)
 app.use(cors())
 // app.use(bodyParser.json())
 
-// const dbUser = 'dbUser'
-// const pass = 'Yrm1sdrmp9GZMOLK'
+const dbUser = 'dbUser'
+const pass = 'Yrm1sdrmp9GZMOLK'
 
 // // const dbUser = process.env.DB_USER
 // // const pass = process.env.DB_PASS
-// const uri = `mongodb+srv://${dbUser}:${pass}@cluster0.evhow.mongodb.net/joloj?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${dbUser}:${pass}@cluster0.evhow.mongodb.net/joloj?retryWrites=true&w=majority`;
 
 // let Test = mongoose.model('Test', testSchema)
 app.get('/contact-us', (req, res) => {
@@ -71,18 +71,18 @@ app.get('/', (req, res) => {
 
 
 const PORT = process.env.PORT || 8080
-app.listen(PORT, () => {
-    console.log(`SERVER IS RUNNING ON PORT ${PORT}`)
-})
-// mongoose
-//     .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
-//     .then(() => {
-//         app.listen(PORT, () => {
-//             console.log(`SERVER IS RUNNING ON PORT ${PORT}`)
-//         })
-//     })
-//     .catch((e) => {
-//         console.log(e)
-//     })
+// app.listen(PORT, () => {
+//     console.log(`SERVER IS RUNNING ON PORT ${PORT}`)
+// })
+mongoose
+    .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`SERVER IS RUNNING ON PORT ${PORT}`)
+        })
+    })
+    .catch((e) => {
+        console.log(e)
+    })
 
 
