@@ -1,6 +1,7 @@
 <%- include('../partials/head.ejs') %>
 <div id="logreg-forms">
     <form action="/signup" method="POST">
+        <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
         <div class="form-group">
             <input type="text" name="username" id="username" class="form-control" placeholder="Username" required="" autofocus="">
         </div>
@@ -13,7 +14,10 @@
         <div class="form-group">
             <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" placeholder="Confirm Password" required="">
         </div>
-        <input type="submit" class="btn btn-primary btn-block" value="Sign up">
+        <!-- <input type="submit" class="btn btn-primary btn-block" value="Sign up"> -->
+        <button type="submit" class="btn btn-primary btn-block">
+            <i class="fas fa-user-plus"></i> Sign up
+        </button>
     </form>
         <!-- <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Sign up </button> -->
 

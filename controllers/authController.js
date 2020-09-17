@@ -1,4 +1,4 @@
-//const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt')
 
 const User = require('../models/user')
 
@@ -12,12 +12,12 @@ exports.signupPostController =  async (req, res, next) => {
     let { username, email, password } = req.body
 
     try {
-        //let hashedPassword = await bcrypt.hash(password, 11)
+        let hashedPassword = await bcrypt.hash(password, 11)
 
         let user = new User({
             username,
             email,
-            password//: hashedPassword
+            password: hashedPassword
         })
 
         let createdUser = await user.save()
@@ -30,34 +30,34 @@ exports.signupPostController =  async (req, res, next) => {
 }
 
 exports.loginGetController = (req, res, next) => {
-    // res.render('pages/login', {title: 'Login to Your Account'})
+    res.render('pages/login', {title: 'Login to Your Account'})
 }
 
-exports.loginPostController =  (req, res, next) => {
-    // let { email, password } = req.body
+exports.loginPostController =  async (req, res, next) => {
+    let { email, password } = req.body
     
-    // try {
-    //     let user = await User.findOne({ email })
-    //     if (!user) {
-    //         return res.json({
-    //             message: 'Invalid Credential'
-    //         })
-    //     }
+    try {
+        let user = await User.findOne({ email })
+        if (!user) {
+            return res.json({
+                message: 'Invalid email'
+            })
+        }
 
-    //     let match = await bcrypt.compare(password, user.password)
-    //     if (!match) {
-    //         return res.json({
-    //             message: 'Invalid Credential'
-    //         })
-    //     }
+        let match = await bcrypt.compare(password, user.password)
+        if (!match) {
+            return res.json({
+                message: 'Invalid pass'
+            })
+        }
 
-    //     console.log('Successfully Logged In', user)
-    //     res.render('pages/login', {title: 'Login to Your Account'})
+        console.log('Successfully Logged In', user)
+        res.render('pages/login', {title: 'Login to Your Account'})
 
-    // } catch (e) {
-    //     console.log(e)
-    //     next(e)
-    // }
+    } catch (e) {
+        console.log(e)
+        next(e)
+    }
 }
 
 exports.logoutController = (req, res, next) => {
