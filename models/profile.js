@@ -31,13 +31,13 @@ const profileSchema = new Schema({
     posts: [
         {
             type: Schema.Types.ObjectId,
-            ref: Post
+            ref: post
         }
     ],
     bookmarks: [
         {
             type: Schema.Types.ObjectId,
-            ref: Post
+            ref: post
         }
     ]
 }, {timestamps: true})
