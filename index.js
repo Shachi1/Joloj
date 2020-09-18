@@ -2,13 +2,29 @@ const express = require('express')
 const cors = require('cors')
 // const bodyParser = require('body-parser')
 const morgan = require('morgan')
+const session =require('express-session')
+const MongoDBStore =require('connect-mongodb-session')(session);
 const mongoose=require('mongoose')
 require('dotenv').config()
 
 // import routes
 const authRoutes = require('./routes/authRoute')
+const dashboardRoutes = require('./routes/dashboardRoute')
 // import playgrounde
 //const validatorRoutes = require('./playground/validator')
+
+// import middleware
+const { bindUserWithRequest } = require('./middleware/authMiddleware')
+const setLocals = require('./middleware/setLocals')
+
+
+
+const MONGODB_URI = 'mongodb://admin:pass123@ds343217.mlab.com:43217/exp-blog'
+const store = new MongoDBStore({
+    uri: MONGODB_URI,
+    collection: 'sessions',
+    expires: 1000 * 60 * 60 * 2
+});
 
 const app = express()
 
@@ -21,11 +37,20 @@ const middleware = [
     morgan('dev'),
     express.static('public'),
     express.urlencoded({ extended: true }),
-    express.json()
+    express.json(),
+    session({
+        secret: process.env.SECRET_KEY || 'SECRET_KEY',
+        resave: false,
+        saveUninitialized: false,
+        store: store
+    }),
+    bindUserWithRequest(),
+    setLocals()
 ]
 app.use(middleware)
 app.use(cors())
 app.use(authRoutes)
+app.use(dashboardRoutes)
 //app.use('/playground', validatorRoutes)
 // app.use(bodyParser.json())
 
@@ -56,7 +81,7 @@ app.get('/knowledge-box', (req, res) => {
 // app.get('/signup', (req, res) => {
 //     res.render('pages/signup.ejs', { title: 'Sign up' })
 // })
-app.get('/', (req, res) => {
+app.get('/index', (req, res) => {
     res.render('pages/index.ejs',{title:'Home'})
 
 
