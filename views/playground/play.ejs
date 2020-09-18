@@ -1,0 +1,29 @@
+<%- include('../partials/head.ejs') %>
+
+<div class="container my-container my-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card card-body">
+                <h4 class="mb-3">Create A New Account</h4>
+                <form action="/playPost" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="username">Enter Your User Name (Must Be Uniq)</label>
+                        <input type="text" name="username" id="username" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Enter Your Valid Email</label>
+                        <input type="file" name="my-file"class="form-control">
+                    </div>
+                    
+                    <input type="submit" class="btn btn-primary" value="Signup">
+                </form>
+                <a href="/auth/login" class="my-3 text-center"> Already have An Account? Login Herte </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>
+</body>
+
+</html>

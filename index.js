@@ -6,7 +6,8 @@ const mongoose=require('mongoose')
 require('dotenv').config()
 
 // import routes
-const authRoutes = require('./routes/authRoute')
+// const routes = require('./routes/routes')
+// const authRoutes = require('./routes/authRoute')
 // import playgrounde
 //const validatorRoutes = require('./playground/validator')
 
@@ -25,7 +26,9 @@ const middleware = [
 ]
 app.use(middleware)
 app.use(cors())
-app.use(authRoutes)
+// app.use(routes)
+const setRoutes = require('./routes/routes')
+
 //app.use('/playground', validatorRoutes)
 // app.use(bodyParser.json())
 
@@ -36,56 +39,19 @@ const pass = 'Yrm1sdrmp9GZMOLK'
 // // const pass = process.env.DB_PASS
 const uri = `mongodb+srv://${dbUser}:${pass}@cluster0.evhow.mongodb.net/joloj?retryWrites=true&w=majority`;
 
-// let Test = mongoose.model('Test', testSchema)
-app.get('/contact-us', (req, res) => {
-    res.render('pages/contact-us.ejs',{title:'Contact us'})
-})
 
-app.get('/dashboard', (req, res) => {
-    res.render('pages/dashboard.ejs', { title: 'Data Dashboard' })
-})
-app.get('/fish-doctor', (req, res) => {
-    res.render('pages/fish-doctor.ejs', { title: 'Fish Doctor' })
-})
-app.get('/knowledge-box', (req, res) => {
-    res.render('pages/knowledge-box.ejs', { title: 'Knowledge Box' })
-})
 // app.get('/login', (req, res) => {
 //     res.render('pages/login.ejs', { title: 'Log in' })
 // })
 // app.get('/signup', (req, res) => {
 //     res.render('pages/signup.ejs', { title: 'Sign up' })
 // })
-app.get('/', (req, res) => {
-    res.render('pages/index.ejs',{title:'Home'})
-
-
-    // res.json({
-    //     message:"Hello"
-    // })
-    // let test = new Test({
-    //     name:'Shourav'
-    // })
-
-    // test.save()
-    //     .then(t => {
-    //         res.json(t)
-    //     })
-    //     .catch(e => {
-    //         console.log(e)
-    //         res.status(500).json({
-    //             error:"Error occured."
-    //         })
-    //     })
-     
-})
-
-
-
-const PORT = process.env.PORT || 8080
-// app.listen(PORT, () => {
-//     console.log(`SERVER IS RUNNING ON PORT ${PORT}`)
+// app.get('/', (req, res) => {
+//     res.render('pages/index.ejs', { title: 'Home' })
 // })
+setRoutes(app)
+const PORT = process.env.PORT || 8080
+
 mongoose
     .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
