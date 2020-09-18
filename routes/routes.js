@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const authRoutes = require('./authRoute')
+const dashboardRoutes = require('./dashboardRoute')
 const upload = require('../middleware/uploadMiddleware')
 // const dashboardRoute = require('./dashboardRoute')
 // const playgroundRoute = require('../playground/play')
@@ -38,6 +39,7 @@ module.exports = app => {
         res.render('pages/index.ejs', { title: 'Home' })
     })
     app.use(authRoutes)
+    app.use(dashboardRoutes)
     app.get('/contact-us', (req, res) => {
         res.render('pages/contact-us.ejs', { title: 'Contact us' })
     })

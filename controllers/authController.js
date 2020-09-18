@@ -101,15 +101,27 @@ exports.signupPostController = async (req, res, next) => {
 
         let createdUser = await user.save()
         console.log('User Created Successfully', createdUser)
-        res.render('pages/signup', {title: 'Create A New Account'})
+        // res.render('pages/signup', {title: 'Create A New Account'})
+        req.session.isLoggedIn = true
+        req.session.user = user
+        req.session.save(err => {
+            if (err) {
+                console.log(err)
+                return next(err)
+            }
+            res.redirect('/')
+        })
+
     } catch (e) {
         console.log(e)
-        next(e)
+        // return next(err)
     }
+    //res.redirect('/')
 }
 
 exports.loginGetController = (req, res, next) => {
-    // console.log(req.session.isLoggedIn, req.session.user)
+    //46
+    console.log(req.session.isLoggedIn, req.session.user)
     res.render('pages/login', { title: 'Login to Your Account', error: {}})
 }
 
@@ -139,15 +151,20 @@ exports.loginPostController = async (req, res, next) => {
                 message: 'Invalid Credential'
             })
         }
-        // req.session.isLoggedIn = true
-        // req.session.user = user
-        // req.session.save(err => {
-        //     if (err) {
-        //         console.log(err)
-        //         return next(err)
-        //     }
-        //     res.redirect('/dashboard')
-        // })
+
+        //76
+        //77
+
+        req.session.isLoggedIn = true
+        req.session.user = user
+        req.session.save(err => {
+            if (err) {
+                console.log(err)
+                return next(err)
+            }
+            res.redirect('/')
+        })
+        // res.render('pages/login', { title: 'Login to Your Account', error: {}})
 
     } catch (e) {
         console.log(e)
@@ -156,13 +173,13 @@ exports.loginPostController = async (req, res, next) => {
 }
 
 exports.logoutController = (req, res, next) => {
-    // req.session.destroy(err => {
-    //     if (err) {
-    //         console.log(err)
-    //         return next(err)
-    //     }
-    //     return res.redirect('/login')
-    // })
+    req.session.destroy(err => {
+        if (err) {
+            console.log(err)
+            return next(err)
+        }
+        return res.redirect('/login')
+    })
 }
 
 
