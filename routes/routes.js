@@ -47,6 +47,8 @@ module.exports = app => {
     })
 
     app.get('/dashboard', (req, res) => {
+
+        
         res.render('pages/dashboard.ejs', { title: 'Data Dashboard' })
     })
     app.get('/fish-doctor', (req, res) => {
