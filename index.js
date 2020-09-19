@@ -7,6 +7,10 @@ const MongoDBStore =require('connect-mongodb-session')(session);
 const mongoose=require('mongoose')
 require('dotenv').config()
 
+
+const dbUser = 'dbUser'
+const pass = 'Yrm1sdrmp9GZMOLK'
+const uri = `mongodb+srv://${dbUser}:${pass}@cluster0.evhow.mongodb.net/joloj?retryWrites=true&w=majority`;
 // import routes
 
 const setRoutes = require('./routes/routes')
@@ -15,7 +19,7 @@ const setRoutes = require('./routes/routes')
 const { bindUserWithRequest } = require('./middleware/authMiddleware')
 const setLocals = require('./middleware/setLocals')
 
-const MONGODB_URI = 'mongodb://admin:pass123@ds343217.mlab.com:43217/exp-blog'
+const MONGODB_URI = uri//'mongodb://admin:pass123@ds343217.mlab.com:43217/exp-blog'
 const store = new MongoDBStore({
     uri: MONGODB_URI,
     collection: 'sessions',
@@ -53,12 +57,9 @@ app.use(cors())
 //app.use('/playground', validatorRoutes)
 // app.use(bodyParser.json())
 
-const dbUser = 'dbUser'
-const pass = 'Yrm1sdrmp9GZMOLK'
 
 // // const dbUser = process.env.DB_USER
 // // const pass = process.env.DB_PASS
-const uri = `mongodb+srv://${dbUser}:${pass}@cluster0.evhow.mongodb.net/joloj?retryWrites=true&w=majority`;
 
 
 setRoutes(app)
