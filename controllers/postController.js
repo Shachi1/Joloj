@@ -42,12 +42,12 @@ exports.createPostPostController = async (req, res, next) => {
 //     }
 
 //     try {
-//         let createdPost = await post.save()
-//         await Profile.findOneAndUpdate(
+//         let createdPost = post.save()
+//         Profile.findOneAndUpdate(
 //             { user: req.user._id },
 //             {$push: {'posts': createdPost._id}}
 //         )
-//         req.flash('success', 'Post Created Successfully')
+//         //req.flash('success', 'Post Created Successfully')
 //         return res.redirect(`/posts/edit/${createdPost._id}`)
 //     } catch (e) {
 //         next(e)
@@ -70,7 +70,7 @@ exports.createPostPostController = async (req, res, next) => {
 //         res.render('pages/dashboard/post/editPost', {
 //             title: "Edit Your Post",
 //             error: {},
-//             flashMessage: Flash.getMessage(req),
+//             //flashMessage: Flash.getMessage(req),
 //             post
 //         })
 //     } catch (e) {
@@ -96,7 +96,7 @@ exports.createPostPostController = async (req, res, next) => {
 //             res.render('pages/dashboard/post/createPost', {
 //                 title: 'Create A New Post',
 //                 error: errors.mapped(),
-//                 flashMessage: Flash.getMessage(req),
+//                 //flashMessage: Flash.getMessage(req),
 //                 post
 //             })
 //         }
@@ -116,7 +116,7 @@ exports.createPostPostController = async (req, res, next) => {
 //             { new: true }
 //         )
 
-//         req.flash('success', 'Post Updated Successfully')
+//         //req.flash('success', 'Post Updated Successfully')
 //         res.redirect('/posts/edit/' + post._id)
 
 //     } catch (e) {
@@ -140,7 +140,7 @@ exports.createPostPostController = async (req, res, next) => {
 //             { user: req.user._id },
 //             {$pull: {'posts': postId}}
 //         )
-//         req.flash('success', 'Post Delete Successfully')
+//         //req.flash('success', 'Post Delete Successfully')
 //         res.redirect('/posts')
         
 //     } catch (e) {
@@ -155,7 +155,7 @@ exports.createPostPostController = async (req, res, next) => {
 //         res.render('pages/dashboard/post/posts', {
 //             title: 'My Created Posts',
 //             posts,
-//             flashMessage: Flash.getMessage(req)
+//             //flashMessage: Flash.getMessage(req)
 //         })
 //     } catch (e) {
 //         next(e)
