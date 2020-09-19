@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const authRoutes = require('./authRoute')
+const postRoute = require('./postRoute')
 const dashboardRoutes = require('./dashboardRoute')
 const upload = require('../middleware/uploadMiddleware')
 // const dashboardRoute = require('./dashboardRoute')
@@ -40,6 +41,7 @@ module.exports = app => {
     })
     app.use(authRoutes)
     app.use(dashboardRoutes)
+    app.use(postRoute)
     app.get('/contact-us', (req, res) => {
         res.render('pages/contact-us.ejs', { title: 'Contact us' })
     })
@@ -58,7 +60,7 @@ module.exports = app => {
             title: 'Playground'
         })
     })
-
+    
     app.post('/playPost', upload.single('my-file'), (req, res, next) => {
 
         if (req.file) {
