@@ -6,6 +6,6 @@ const {
     dashboardGetController
 } = require('../controllers/dashboardController')
 
-router.get('/', isAuthenticated, dashboardGetController)
+router.get('/dashboard', isAuthenticated, dashboardGetController)
 
 module.exports = router

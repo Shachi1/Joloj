@@ -1,3 +1,4 @@
+const session = require('express-session')
 const User = require('../models/user')
 
 exports.bindUserWithRequest = () => {
@@ -7,6 +8,7 @@ exports.bindUserWithRequest = () => {
         }
 
         try {
+            //req.session.User._id
             let user = await User.findById(req.session.user._id)
             req.user = user
             next()
