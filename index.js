@@ -11,15 +11,9 @@ require('dotenv').config()
 
 const setRoutes = require('./routes/routes')
 
-
-
-
-
 // import middleware
 const { bindUserWithRequest } = require('./middleware/authMiddleware')
 const setLocals = require('./middleware/setLocals')
-
-
 
 const MONGODB_URI = 'mongodb://admin:pass123@ds343217.mlab.com:43217/exp-blog'
 const store = new MongoDBStore({
