@@ -8,7 +8,7 @@ const mongoose=require('mongoose')
 require('dotenv').config()
 
 // import routes
-//test
+
 const setRoutes = require('./routes/routes')
 
 
