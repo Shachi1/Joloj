@@ -4,39 +4,10 @@ const postRoute = require('./postRoute')
 const dashboardRoutes = require('./dashboardRoute')
 const adminRoutes = require('./adminRoute')
 const upload = require('../middleware/uploadMiddleware')
-// const dashboardRoute = require('./dashboardRoute')
-// const playgroundRoute = require('../playground/play')
-
-// const routes = [
-//     // {
-//     //     path: '/auth',
-//     //     handler: authRoutes
-//     // },
-//     // {
-//     //     path: '/dashboard',
-//     //     handler: dashboardRoute
-//     // },
-//     // {
-//     //     path: '/playground',
-//     //     handler: playgroundRoute
-//     // },
-//     {
-//         path: '/',
-//         handler: 
-//     }
-// ]
-
-
-
+const fishDocRoutes = require('./fishDocRoutes')
 
 module.exports = app => {
-    // routes.forEach(r => {
-    //     if (r.path === '/') {
-    //         app.get(r.path, r.handler)
-    //     } else {
-    //         app.use(r.path, r.handler)
-    //     }
-    // })
+    
     app.get('/', (req, res) => {
         res.render('pages/index.ejs', { title: 'Home' })
     })
@@ -44,6 +15,8 @@ module.exports = app => {
     app.use(dashboardRoutes)
     app.use(adminRoutes)
     app.use(postRoute)
+    app.use('/doctors-list',fishDocRoutes)
+    //app.use(uploadRoutes)
     app.get('/contact-us', (req, res) => {
         res.render('pages/contact-us.ejs', { title: 'Contact us' })
     })
