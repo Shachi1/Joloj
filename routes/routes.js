@@ -5,7 +5,9 @@ const dashboardRoutes = require('./dashboardRoute')
 const adminRoutes = require('./adminRoute')
 const upload = require('../middleware/uploadMiddleware')
 const fishDocRoutes = require('./fishDocRoutes')
+const messageRoutes = require('./messageRoute')
 const Contact = require('../models/fishDoctor')
+const mongoose=require('mongoose')
 
 module.exports = app => {
     
@@ -17,12 +19,12 @@ module.exports = app => {
     app.use(dashboardRoutes)
     app.use(adminRoutes)
     app.use(postRoute)
+    app.use(messageRoutes)
     app.use('/doctors-list', fishDocRoutes)
+    
     app.get('/contact-us', (req, res) => {
         res.render('pages/contact-us.ejs', { title: 'Contact us' })
     })
-
-
     // app.get('/dashboard', (req, res) => {
     //     res.render('pages/dashboard.ejs', { title: 'Data Dashboard' })
     // })
@@ -65,5 +67,11 @@ module.exports = app => {
         }
 
         res.redirect('/play')
+    })
+
+    app.get('/show-message', (req, res) => {
+        mongoose.model('message').find(function(err,messages){
+            res.send(messages)
+        })
     })
 }
