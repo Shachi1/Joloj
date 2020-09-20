@@ -13,12 +13,11 @@ module.exports = app => {
     app.get('/', (req, res) => {
         res.render('pages/index.ejs', { title: 'Home' })
     })
+    
     app.use(authRoutes)
     app.use(dashboardRoutes)
     app.use(adminRoutes)
-    //app.use(postRoute)
-    app.use(fishDocRoutes)
-  //  app.use(messageRoutes)
+    app.use(postRoute)
     app.use('/doctors-list', fishDocRoutes)
     
     app.get('/contact-us', (req, res) => {
