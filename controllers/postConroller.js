@@ -1,21 +1,5 @@
 const Contact = require('../models/fishDoctor')
 
-exports.showAllContact = (req, res) => {
-    Contact.find()
-        .then(contacts => {
-            res.render('pages/fish-doctor', {
-                title:'fish doctors',
-                contacts,
-                error: {}
-            })
-        })
-        .catch(e => {
-            console.log(e)
-            res.json({
-                message: 'Error Occurred'
-            })
-        })
-}
 exports.getAllContact = (req, res) => {
     Contact.find()
         .then(contacts => {

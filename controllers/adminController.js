@@ -1,3 +1,3 @@
 exports.adminGetController = (req, res, next) => {
-    res.render('pages/admin-panel', {title: 'Admin'})
+    res.render('pages/adminPanel/admin-panel', {title: 'Admin'})
 }
