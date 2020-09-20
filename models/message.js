@@ -9,7 +9,7 @@ const messageSchema = new Schema({
         trim: true,
         maxlength: 15,
     },
-    _email: {
+    email: {
         type: String,
         required: true
     },
@@ -19,13 +19,11 @@ const messageSchema = new Schema({
     message: {
         type: String,
         required: true
-    },
+    }
     // Replied: {
     //     type: Boolean
         
     // }
-}, {
-    timestamps: true
 })
 
 const message = model('message', messageSchema)

@@ -5,7 +5,7 @@ const dashboardRoutes = require('./dashboardRoute')
 const adminRoutes = require('./adminRoute')
 const upload = require('../middleware/uploadMiddleware')
 const fishDocRoutes = require('./fishDocRoutes')
-//const messageRoutes = require('./messageRoute')
+const messageRoutes = require('./messageRoute')
 const Contact = require('../models/fishDoctor')
 
 module.exports = app => {
@@ -18,6 +18,7 @@ module.exports = app => {
     app.use(dashboardRoutes)
     app.use(adminRoutes)
     app.use(postRoute)
+    app.use(messageRoutes)
     app.use('/doctors-list', fishDocRoutes)
     
     app.get('/contact-us', (req, res) => {
