@@ -6,6 +6,7 @@ const adminRoutes = require('./adminRoute')
 const upload = require('../middleware/uploadMiddleware')
 const fishDocRoutes = require('./fishDocRoutes')
 
+
 module.exports = app => {
     
     app.get('/', (req, res) => {
@@ -14,9 +15,8 @@ module.exports = app => {
     app.use(authRoutes)
     app.use(dashboardRoutes)
     app.use(adminRoutes)
-    app.use(postRoute)
-    app.use('/doctors-list',fishDocRoutes)
-    //app.use(uploadRoutes)
+    //app.use(postRoute)
+    app.use(fishDocRoutes)
     app.get('/contact-us', (req, res) => {
         res.render('pages/contact-us.ejs', { title: 'Contact us' })
     })
@@ -24,9 +24,13 @@ module.exports = app => {
     // app.get('/dashboard', (req, res) => {
     //     res.render('pages/dashboard.ejs', { title: 'Data Dashboard' })
     // })
-    app.get('/fish-doctor', (req, res) => {
-        res.render('pages/fish-doctor.ejs', { title: 'Fish Doctor' })
-    })
+    // app.get('/fish-doctor', (req, res) => {
+    //     res.render('pages/fish-doctor.ejs', {
+    //         title: 'Fish Doctor',
+    //         contacts,
+    //         error: {}
+    //     })
+    // })
     app.get('/knowledge-box', (req, res) => {
         res.render('pages/knowledge-box.ejs', { title: 'Knowledge Box' })
     })
