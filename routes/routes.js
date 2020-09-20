@@ -5,7 +5,7 @@ const dashboardRoutes = require('./dashboardRoute')
 const adminRoutes = require('./adminRoute')
 const upload = require('../middleware/uploadMiddleware')
 const fishDocRoutes = require('./fishDocRoutes')
-
+const Contact = require('../models/fishDoctor')
 
 module.exports = app => {
     
@@ -15,22 +15,32 @@ module.exports = app => {
     app.use(authRoutes)
     app.use(dashboardRoutes)
     app.use(adminRoutes)
-    //app.use(postRoute)
-    app.use(fishDocRoutes)
+    app.use('/doctors-list', fishDocRoutes)
     app.get('/contact-us', (req, res) => {
         res.render('pages/contact-us.ejs', { title: 'Contact us' })
     })
 
+
     // app.get('/dashboard', (req, res) => {
     //     res.render('pages/dashboard.ejs', { title: 'Data Dashboard' })
     // })
-    // app.get('/fish-doctor', (req, res) => {
-    //     res.render('pages/fish-doctor.ejs', {
-    //         title: 'Fish Doctor',
-    //         contacts,
-    //         error: {}
-    //     })
-    // })
+    app.get('/fish-doctor', (req, res) =>{
+        Contact.find()
+            .then(contacts => {
+                res.render('pages/fish-doctor', {
+                    title: 'fish doctors',
+                    contacts,
+                    error: {}
+                })
+            })
+            .catch(e => {
+                console.log(e)
+                res.json({
+                    message: 'hlw, Error Occurred'
+                })
+            })
+        })
+
     app.get('/knowledge-box', (req, res) => {
         res.render('pages/knowledge-box.ejs', { title: 'Knowledge Box' })
     })

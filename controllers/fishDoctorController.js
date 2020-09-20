@@ -12,7 +12,7 @@ exports.showAllContact = (req, res) => {
         .catch(e => {
             console.log(e)
             res.json({
-                message: 'Error Occurred'
+                message: 'hlw, Error Occurred'
             })
         })
 }
