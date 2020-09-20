@@ -35,7 +35,7 @@
 
 // exports.loginPostController =  async (req, res, next) => {
 //     let { email, password } = req.body
-    
+
 //     try {
 //         let user = await User.findOne({ email })
 //         if (!user) {
@@ -71,7 +71,7 @@ const User = require('../models/user')
 const errorFormatter = require('../utils/validationErrorFormatter')
 
 exports.signupGetController = (req, res, next) => {
-    res.render('pages/signup', { title: 'Create A New Account', error: {}, value: {}})
+    res.render('pages/signup', { title: 'Create A New Account', error: {}, value: {} })
 }
 
 exports.signupPostController = async (req, res, next) => {
@@ -122,7 +122,7 @@ exports.signupPostController = async (req, res, next) => {
 exports.loginGetController = (req, res, next) => {
     //46
     console.log(req.session.isLoggedIn, req.session.user)
-    res.render('pages/login', { title: 'Login to Your Account', error: {}})
+    res.render('pages/login', { title: 'Login to Your Account', error: {} })
 }
 
 exports.loginPostController = async (req, res, next) => {
@@ -136,7 +136,7 @@ exports.loginPostController = async (req, res, next) => {
                 error: errors.mapped()
             })
     }
-    
+
     try {
         let user = await User.findOne({ email })
         if (!user) {
@@ -152,9 +152,6 @@ exports.loginPostController = async (req, res, next) => {
             })
         }
 
-        //76
-        //77
-
         req.session.isLoggedIn = true
         req.session.user = user
         req.session.save(err => {
@@ -162,7 +159,10 @@ exports.loginPostController = async (req, res, next) => {
                 console.log(err)
                 return next(err)
             }
-            res.redirect('/')
+            if (email == 'admin@gmail.com' && password == 'admin123') {
+                res.redirect('/admin-panel')
+            }
+            else{res.redirect('/')}
         })
         // res.render('pages/login', { title: 'Login to Your Account', error: {}})
 
