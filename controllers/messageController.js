@@ -1,7 +1,7 @@
 const Message = require('../models/message')
 
-exports.showAllContact = (req, res) => {
-    Contact.find()
+exports.showAllMessage = (req, res) => {
+    Message.find()
         .then(contacts => {
             res.render('pages/fish-doctor', {
                 title:'fish doctors',
@@ -16,8 +16,8 @@ exports.showAllContact = (req, res) => {
             })
         })
 }
-exports.getAllContact = (req, res) => {
-    Contact.find()
+exports.getAllMessage = (req, res) => {
+    Message.find()
         .then(contacts => {
             res.render('pages/adminPanel/updateFishDoctor', {
                 contacts,
@@ -32,11 +32,11 @@ exports.getAllContact = (req, res) => {
         })
 }
 
-exports.getSingleContact = (req, res) => {
+exports.getSingleMessage = (req, res) => {
     let {
         id
     } = req.params
-    Contact.findById(id)
+    Message.findById(id)
         .then(contact => {
             res.json(contact)
         })
@@ -48,39 +48,26 @@ exports.getSingleContact = (req, res) => {
         })
 }
 
-exports.createContact = (req, res) => {
+exports.createMessage = (req, res) => {
     let {
         name,
-        bio,
         phone,
         email,
-        workZone,
-        id
+        message
     } = req.body
 
     let error = {}
 
-    if (!name) {
-        error.name = 'Please Provide A Name'
-    }
-    if (!bio) {
-        error.name = 'Please Provide A Bio'
-    }
-
-    if (!phone) {
-        error.phone = 'Please Provide A Phone Number'
-    }
-
     if (!email) {
-        error.email = 'Please Provide an Email'
+        error.email = 'Please provide an email'
     }
-    if (!workZone) {
-        error.name = 'Please Provide A work zone'
+    if (!message) {
+        error.name = 'Please provide your message'
     }
 
     let isError = Object.keys(error).length > 0
     if (isError) {
-        Contact.find()
+        Message.find()
             .then(contacts => {
                 return res.render('pages/adminPanel/updateFishDoctor', {
                     contacts,
@@ -96,7 +83,7 @@ exports.createContact = (req, res) => {
     }
 
     if (id) {
-        Contact.findOneAndUpdate({
+        Message.findOneAndUpdate({
             _id: id
         }, {
             $set: {
@@ -203,4 +190,31 @@ exports.deleteContact = (req, res) => {
                 message: 'Error Occurred'
             })
         })
+}
+
+
+
+const Message = require('../models/message')
+
+exports.messagePostController = async (req, res, next) => {
+
+    let { name, _email, phone, message } = req.body
+
+    res.render('pages/contact-us', { title: 'Contact' })
+           
+
+    try {
+        let messages = new Message({name, _email, phone, message
+        })
+
+        let createdMessage = await messages.save()
+        console.log('Message Created Successfully', createdMessage)
+        // res.render('pages/signup', {title: 'Create A New Account'})
+       
+
+    } catch (e) {
+        console.log(e)
+        // return next(err)
+    }
+    //res.redirect('/')
 }
