@@ -1,190 +1,178 @@
-const Contact = require('../models/fishDoctor')
+const { validationResult } = require('express-validator')
+const readingTime = require('reading-time')
 
-exports.getAllContact = (req, res) => {
-    Contact.find()
-        .then(contacts => {
-            res.render('pages/adminPanel/updateFishDoctor', {
-                contacts,
-                error: {}
-            })
-        })
-        .catch(e => {
-            console.log(e)
-            res.json({
-                message: 'Error Occurred'
-            })
-        })
+//const Flash = require('../utils/Flash')
+const errorFormatter = require('../utils/validationErrorFormatter')
+
+const Post = require('../models/Post')
+// const Profile = require('../models/Profile')
+
+exports.createPostGetController = (req, res, next) => {
+    res.render('pages/adminPanel/createPost', {
+        title: 'Create A New Post',
+        error: {},
+        //flashMessage: Flash.getMessage(req),
+        value: {}
+    })
 }
 
-exports.getSingleContact = (req, res) => {
-    let {
-        id
-    } = req.params
-    Contact.findById(id)
-        .then(contact => {
-            res.json(contact)
-        })
-        .catch(e => {
-            console.log(e)
-            res.json({
-                message: 'Error Occurred'
-            })
-        })
-}
+exports.createPostPostController = async (req, res, next) => {
+    let { title, body, tags } = req.body
+    let errors = validationResult(req).formatWith(errorFormatter)
 
-exports.createContact = (req, res) => {
-    let {
-        name,
-        bio,
-        phone,
-        email,
-        workZone,
-        id
-    } = req.body
-
-    let error = {}
-
-    if (!name) {
-        error.name = 'Please Provide A Name'
-    }
-    if (!bio) {
-        error.name = 'Please Provide A Bio'
-    }
-
-    if (!phone) {
-        error.phone = 'Please Provide A Phone Number'
-    }
-
-    if (!email) {
-        error.email = 'Please Provide an Email'
-    }
-    if (!workZone) {
-        error.name = 'Please Provide A work zone'
-    }
-
-    let isError = Object.keys(error).length > 0
-    if (isError) {
-        Contact.find()
-            .then(contacts => {
-                return res.render('pages/adminPanel/updateFishDoctor', {
-                    contacts,
-                    error
-                })
-            })
-            .catch(e => {
-                console.log(e)
-                return res.json({
-                    message: 'Error Occurred'
-                })
-            })
-    }
-
-    if (id) {
-        Contact.findOneAndUpdate({
-            _id: id
-        }, {
-            $set: {
-                name,
-                bio,
-                phone,
-                email,
-                workZone
+    if (!errors.isEmpty()) {
+        res.render('pages/adminPanel/createPost', {
+            title: 'Create A New Post',
+            error: errors.mapped(),
+            //flashMessage: Flash.getMessage(req),
+            value: {
+                title,
+                body,
+                tags
             }
-        }).then(() => {
-            Contact.find()
-                .then(contacts => {
-                    res.render('pages/adminPanel/updateFishDoctor', { contacts, error: {} })
-                })
-        }).catch(e => {
-            console.log(e)
-            return res.json({
-                message: 'Error Occurred'
-            })
         })
-    } else {
-        let contact = new Contact({
-            name,
-            bio,
-            phone,
-            email,
-            workZone
-        })
-        contact.save()
-            .then(c => {
-                Contact.find()
-                    .then(contacts => {
-                        return res.render('pages/adminPanel/updateFishDoctor', {
-                            contacts,
-                            error: {}
-                        })
-                    })
-            })
-            .catch(e => {
-                console.log(e)
-                return res.json({
-                    message: 'Error Occurred'
-                })
-            })
+    }
+
+    if (tags) {
+        tags = tags.split(',')
+        tags = tags.map(t => t.trim())
+    }
+
+    let readTime = readingTime(body).text
+
+    let post = new Post({
+        title,
+        body,
+        tags,
+        author: req.user._id,
+        thumbnail: '',
+        readTime,
+        likes: [],
+        dislikes: [],
+        comments: []
+    })
+
+    if (req.file) {
+        post.thumbnail = `/uploads/${req.file.filename}`
+    }
+
+    try {
+        let createdPost = await post.save()
+        await Profile.findOneAndUpdate(
+            { user: req.user._id },
+            { $push: { 'posts': createdPost._id } }
+        )
+        //req.flash('success', 'Post Created Successfully')
+        return res.redirect(`/posts/edit/${createdPost._id}`)
+    } catch (e) {
+        next(e)
     }
 
 }
 
-exports.updateContact = (req, res) => {
-    let {
-        name,
-        bio,
-        phone,
-        email,
-        workZone
-    } = req.body
-    let {
-        id
-    } = req.params
+exports.editPostGetController = async (req, res, next) => {
+    let postId = req.params.postId
 
-    Contact.findOneAndUpdate({
-        _id: id
-    }, {
-        $set: {
-            name,
-            bio,
-            phone,
-            email,
-            workZone,
+    try {
+        let post = await Post.findOne({ author: req.user._id, _id: postId })
+
+        if (!post) {
+            let error = new Error('404 Page Not Found')
+            error.status = 404
+            throw error
         }
-    }, {
-        new: true
-    })
-        .then(contact => {
-            res.json(contact)
+
+        res.render('pages/adminPanel/createPost', {
+            title: "Edit Your Post",
+            error: {},
+            //flashMessage: Flash.getMessage(req),
+            post
         })
-        .catch(e => {
-            console.log(e)
-            res.json({
-                message: 'Error Occurred'
-            })
-        })
+    } catch (e) {
+        next(e)
+    }
 }
 
-exports.deleteContact = (req, res) => {
-    let {
-        id
-    } = req.params
-    Contact.findOneAndDelete({
-        _id: id
-    })
-        .then(() => {
-            Contact.find()
-                .then(contacts => {
-                    res.render('pages/adminPanel/updateFishDoctor', {
-                        contacts,
-                        error: {}
-                    })
-                })
-        })
-        .catch(e => {
-            console.log(e)
-            res.json({
-                message: 'Error Occurred'
+exports.editPostPostController = async (req, res, next) => {
+    let { title, body, tags } = req.body
+    let postId = req.params.postId
+    let errors = validationResult(req).formatWith(errorFormatter)
+
+    try {
+        let post = await Post.findOne({ author: req.user._id, _id: postId })
+
+        if (!post) {
+            let error = new Error('404 Page Not Found')
+            error.status = 404
+            throw error
+        }
+
+        if (!errors.isEmpty()) {
+            res.render('pages/adminPanel/createPost', {
+                title: 'Create A New Post',
+                error: errors.mapped(),
+                //flashMessage: Flash.getMessage(req),
+                post
             })
+        }
+
+        if (tags) {
+            tags = tags.split(',')
+            tags = tags.map(t => t.trim())
+        }
+        let thumbnail = post.thumbnail
+        if (req.file) {
+            thumbnail = req.file.filename
+        }
+
+        await Post.findOneAndUpdate(
+            { _id: post._id },
+            { $set: { title, body, tags, thumbnail } },
+            { new: true }
+        )
+
+        //req.flash('success', 'Post Updated Successfully')
+        res.redirect('/posts/edit/' + post._id)
+
+    } catch (e) {
+        next(e)
+    }
+}
+
+exports.deletePostGetController = async (req, res, next) => {
+    let { postId } = req.params
+
+    try {
+        let post = await Post.findOne({ author: req.user._id, _id: postId })
+        if (!post) {
+            let error = new Error('404 Page Not Found')
+            error.status = 404
+            throw error
+        }
+
+        await Post.findOneAndDelete({ _id: postId })
+        await Profile.findOneAndUpdate(
+            { user: req.user._id },
+            { $pull: { 'posts': postId } }
+        )
+        //req.flash('success', 'Post Delete Successfully')
+        res.redirect('/posts')
+
+    } catch (e) {
+        next(e)
+    }
+}
+
+
+exports.postsGetController = async (req, res, next) => {
+    try {
+        let posts = await Post.find({ author: req.user._id })
+        res.render('pages/adminPanel/createPost', {
+            title: 'My Created Posts',
+            posts,
+            //flashMessage: Flash.getMessage(req)
         })
+    } catch (e) {
+        next(e)
+    }
 }
