@@ -2,9 +2,9 @@ const router = require('express').Router()
 const { isAuthenticated } = require('../middleware/authMiddleware')
 
 const {
-    dashboardGetController
-} = require('../controllers/dashboardController')
+    adminGetController
+} = require('../controllers/adminController')
 
-router.get('/dashboard', isAuthenticated, dashboardGetController)
+router.get('/admin-panel', isAuthenticated, adminGetController)
 
 module.exports = router
