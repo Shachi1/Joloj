@@ -16,7 +16,7 @@ module.exports = app => {
     app.use(authRoutes)
     app.use(dashboardRoutes)
     app.use(adminRoutes)
-    app.use(postRoute)
+    app.use('/posts', postRoute)
     app.use('/doctors-list', fishDocRoutes)
     app.get('/contact-us', (req, res) => {
         res.render('pages/contact-us.ejs', { title: 'Contact us' })
