@@ -155,3 +155,16 @@ exports.postsGetController = async (req, res, next) => {
         next(e)
     }
 }
+
+exports.showPostsController = async (req, res, next) => {
+    try {
+        let posts = await Post.find()
+        res.render('pages/know.ejs', {
+            title: 'My Created Posts',
+            posts,
+            //flashMessage: Flash.getMessage(req)
+        })
+    } catch (e) {
+        next(e)
+    }
+}
