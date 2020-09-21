@@ -49,22 +49,7 @@ module.exports = app => {
             })
         })
     
-    // app.get('/knowledge-box', (req, res) => {
-    //     Post.find()
-    //         .then(posts => {
-    //             res.render('pages/know', {
-    //                 title: 'knowledge-box',
-    //                 posts,
-    //                 error: {}
-    //             })
-    //         })
-    //         .catch(e => {
-    //             console.log(e)
-    //             res.json({
-    //                 message: 'Error Occurred'
-    //             })
-    //         })
-    // })
+  
     
 
     app.get('/admin-panel', (req, res) => {
