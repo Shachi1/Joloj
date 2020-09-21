@@ -20,4 +20,7 @@ const { messagePostController } = require('../controllers/messageController')
 
 router.post('/contact-us', messagePostController)
 
+//router.get('/contact-us', messageGetController)
+
+
 module.exports = router

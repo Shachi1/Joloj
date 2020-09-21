@@ -1,19 +1,19 @@
-const multer = require("multer")
+const multer = require('multer')
 const path = require('path')
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null,'public/uploads')
+        cb(null, 'public/uploads')
     },
     filename: (req, file, cb) => {
-        cb(null,file.fieldname + '-'+ file.originalname)
+        cb(null, file.fieldname + '-' + Date.now() + '-' + file.originalname)
     }
 })
 
 const upload = multer({
     storage,
     limits: {
-        fileSize: 1024 * 1024 * 5
+        fileSize: 1024 * 1024 * 1024
     },
     fileFilter: (req, file, cb) => {
         const types = /jpeg|jpg|png|gif/
