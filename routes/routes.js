@@ -25,6 +25,7 @@ module.exports = app => {
     app.use(messageRoutes)
     app.use('/doctors-list', fishDocRoutes)
     app.use('/knowledge-box', postRoute)
+    const apiRoutes = require('../api/routes/apiRoutes')
     app.get('/contact-us', (req, res) => {
         res.render('pages/contact-us.ejs', { title: 'Contact us' })
     })

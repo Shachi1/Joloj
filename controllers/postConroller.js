@@ -180,7 +180,7 @@ exports.singlePostGetController = async (req, res, next) => {
 exports.showPostsController = async (req, res, next) => {
     try {
         let posts = await Post.find()
-        res.render('pages/know.ejs', {
+        res.render('pages/allBlog.ejs', {
             title: 'My Created Posts',
             posts
         })
