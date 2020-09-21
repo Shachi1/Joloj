@@ -11,27 +11,28 @@
         <div class="col-md-10 my-5">
             <div class="card card-body mx-5 py-5">
                 <h5 class="my-3">Create A New Post</h5>
-                <form action="/posts/create" method="POST" >
+                <form action="/posts/edit/<%= post._id %>" method="POST">
                     <div class="form-group">
                         <label for="title">Enter Your Post Title</label>
-                        <input type="text" name="title" id="title" class="form-control">
+                        <input type="text" name="title" id="title" class="form-control"  value="<%= post.title %>">
                         <div class="invalid-feedback">
                             <%= error.title %>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="body">Enter Your Post Body</label>
-                        <textarea name="body" id="body" class="form-control"></textarea>
+                        <textarea name="body" id="body" class="form-control"><%- post.body %></textarea>
                         <div class="invalid-feedback">
                             <%= error.body %>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="tags"> Enter Some Tags (Max 10) </label>
-                        <input type="text" name="tags" id="tags" placeholder="tag1, tag2, tag3" class="form-control">
+                        <input type="text" name="tags" id="tags" placeholder="tag1, tag2, tag3" class="form-control" value="<%= post.tags %>">
                     </div>
             </div>
-            <input type="submit" class="btn btn-primary" value="Create Post">
+            <input type="submit" class="btn btn-primary" value="Update Post">
+            <a class="btn btn-danger" href="/posts/delete/<%= post._id %>"> Delete Post </a>
             </form>
         </div>
     </div>
@@ -42,9 +43,7 @@
 
 <%- include('../../partials/footer.ejs') %>
 
-<!-- <script src="https://cdn.tiny.cloud/1/8b8k1lhj29863rhr49mvfnaa0cl8bxo2267sye0vyxenhh7h/tinymce/5/tinymce.min.js"
-    referrerpolicy="origin"></script>
-<script src="/scripts/tinyMCE.js"></script> -->
+
 
 </body>
 

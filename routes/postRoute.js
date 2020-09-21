@@ -17,7 +17,7 @@ router.get('/create', isAuthenticated, createPostGetController)
 router.post('/create', isAuthenticated, postValidator, createPostPostController)
 
 router.get('/edit/:postId', isAuthenticated, editPostGetController)
-router.post('/edit/:postId', isAuthenticated, upload.single('post-thumbnail'), postValidator, editPostPostController)
+router.post('/edit/:postId', isAuthenticated, postValidator, editPostPostController)
 
 router.get('/delete/:postId', isAuthenticated, deletePostGetController)
 
