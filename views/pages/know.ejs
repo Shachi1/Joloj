@@ -1,0 +1,55 @@
+<%- include('../partials/head.ejs') %>
+<div>
+    <h4 class="header1">Find nearby Fish doctor</h4>
+    <!-- select your zone -->
+    <div class="container">
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Bio</th>
+                    <th scope="col">Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let post of posts) { %>
+                <tr>
+                    <td><%= post.title %></td>
+                    <td><%= post.body %></td>
+                    <td><%= post.tags %></td>
+                   
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+    
+</div>
+
+<!-- 
+<div class="container blog-sec">
+    <br>
+    <div class="row">
+
+        <div class="card" style="width: 18rem;">
+            
+            <div class="card-body">
+                <h5 class="card-title">MR. KH. FARHAD HOSSAIN</h5>
+                <p class="card-text">Chairman, FISHTECH (BD) LIMITED</p>
+            </div>
+            
+            <div class="card-body">
+                <a href="#" class="card-link">Details</a>
+            </div>
+        </div>
+
+    </div>
+
+</div> -->
+
+<%- include('../partials/footer.ejs') %>
+
+</body>
+
+</html>

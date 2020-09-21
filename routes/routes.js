@@ -8,7 +8,9 @@ const fishDocRoutes = require('./fishDocRoutes')
 const messageRoutes = require('./messageRoute')
 const mongoose=require('mongoose')
 const Contact = require('../models/fishDoctor')
+const Post = require('../models/post')
 const { render } = require('ejs')
+const { postsGetController}=require('../controllers/postConroller')
 
 module.exports = app => {
     
@@ -41,14 +43,12 @@ module.exports = app => {
             .catch(e => {
                 console.log(e)
                 res.json({
-                    message: 'hlw, Error Occurred'
+                    message: 'Error Occurred'
                 })
             })
         })
 
-    app.get('/knowledge-box', (req, res) => {
-        res.render('pages/knowledge-box.ejs', { title: 'Knowledge Box' })
-    })
+    
 
     app.get('/admin-panel', (req, res) => {
      
@@ -70,19 +70,12 @@ module.exports = app => {
         res.redirect('/play')
     })
 
-    // app.get('/show-message', (req, res) => {
-    //     // mongoose.model('message').find(function(err,messages){
-    //     //     // res.send(messages)
-    //     //     res.render('/pages/adminPanel/show-message.ejs', {
-    //     //         title: 'Messages',
-    //     //         messages
-    //     //     })
-    //     // })
-    //     res.render('/pages/show-message.ejs', {tittle:'ok'})
-    // })
+    
     app.get('/show-message', (req, res) => {
         mongoose.model('message').find(function(err,messages){
         res.render('pages/show-message.ejs', { title: 'Messages' ,messages})
         })
     })
+    app.get('/knowledge-box', postsGetController);
+    
 }
