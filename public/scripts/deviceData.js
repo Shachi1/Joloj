@@ -4,10 +4,10 @@ function ph() {
 var pH = (Math.random() * 6).toFixed(3);
    document.getElementById("demo1").innerHTML = pH;
    if (pH < 1) {
-	document.getElementById("demopH").innerHTML = "Increase Level";
+	document.getElementById("demopH").innerHTML = "Increase pH Level";
    }
    else if (pH > 6) {
-	document.getElementById("demopH").innerHTML = "Decrease Level";
+	document.getElementById("demopH").innerHTML = "Decrease pH Level";
    }
    else {
 	document.getElementById("demopH").innerHTML = "Normal pH level";
@@ -18,7 +18,7 @@ function tds() {
    var TDS = (Math.random() * 10).toFixed(3);
    document.getElementById("demo2").innerHTML = TDS;
    if (TDS > 10) {
-	document.getElementById("demoTDS").innerHTML = "Increase Level";
+	document.getElementById("demoTDS").innerHTML = "Increase TDS Level";
    }
    else {
 	document.getElementById("demoTDS").innerHTML = "Normal TDS level";
