@@ -85,4 +85,11 @@ module.exports = app => {
         res.render('pages/show-message.ejs', { title: 'Messages' ,messages})
         })
     })
+
+    app.get('/hatcheryType', (req, res) => {
+        res.render('pages/hatcheryType.ejs', { title: 'Hatchery Descripsion' })
+    })
+    app.get('/about-us', (req, res) => {
+        res.render('pages/about-us.ejs', { title: 'About us' })
+    })
 }

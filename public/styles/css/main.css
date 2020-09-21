@@ -216,9 +216,10 @@ background-image: linear-gradient(315deg, #63a4ff28 0%, #83eaf138 74%);
 }
 .contact-form{
     background: #fff;
-    margin-top: 10%;
-    margin-bottom: 5%;
-    width: 70%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 50px;
+    width: 80%;
     border-radius: 15px;
 }
 .contact-form .form-control{
