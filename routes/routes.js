@@ -8,9 +8,9 @@ const fishDocRoutes = require('./fishDocRoutes')
 const messageRoutes = require('./messageRoute')
 const mongoose=require('mongoose')
 const Contact = require('../models/fishDoctor')
-const Post = require('../models/post')
+// const Post = require('../models/post')
 const { render } = require('ejs')
-const { postsGetController}=require('../controllers/postConroller')
+
 
 module.exports = app => {
     
@@ -24,7 +24,7 @@ module.exports = app => {
     app.use('/posts',postRoute)
     app.use(messageRoutes)
     app.use('/doctors-list', fishDocRoutes)
-    
+    app.use('/knowledge-box', postRoute)
     app.get('/contact-us', (req, res) => {
         res.render('pages/contact-us.ejs', { title: 'Contact us' })
     })
@@ -47,7 +47,23 @@ module.exports = app => {
                 })
             })
         })
-
+    
+    // app.get('/knowledge-box', (req, res) => {
+    //     Post.find()
+    //         .then(posts => {
+    //             res.render('pages/know', {
+    //                 title: 'knowledge-box',
+    //                 posts,
+    //                 error: {}
+    //             })
+    //         })
+    //         .catch(e => {
+    //             console.log(e)
+    //             res.json({
+    //                 message: 'Error Occurred'
+    //             })
+    //         })
+    // })
     
 
     app.get('/admin-panel', (req, res) => {
@@ -76,6 +92,11 @@ module.exports = app => {
         res.render('pages/show-message.ejs', { title: 'Messages' ,messages})
         })
     })
-    app.get('/knowledge-box', postsGetController);
-    
+
+    app.get('/hatcheryType', (req, res) => {
+        res.render('pages/hatcheryType.ejs', { title: 'Hatchery Descripsion' })
+    })
+    app.get('/about-us', (req, res) => {
+        res.render('pages/about-us.ejs', { title: 'About us' })
+    })
 }

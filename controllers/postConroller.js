@@ -158,7 +158,7 @@ exports.postsGetController = async (req, res, next) => {
 
 exports.showPostsController = async (req, res, next) => {
     try {
-        let posts = await Post.find({ author: req.user._id })
+        let posts = await Post.find()
         res.render('pages/know.ejs', {
             title: 'My Created Posts',
             posts,
