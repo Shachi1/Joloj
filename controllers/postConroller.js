@@ -67,7 +67,7 @@ exports.editPostGetController = async (req, res, next) => {
     let postId = req.params.postId
 
     try {
-        let post = await Post.findOne({ author: req.user._id, _id: postId })
+        let post = await Post.findOne({ _id: postId })
 
         if (!post) {
             let error = new Error('404 Page Not Found')
@@ -92,7 +92,7 @@ exports.editPostPostController = async (req, res, next) => {
     let errors = validationResult(req).formatWith(errorFormatter)
 
     try {
-        let post = await Post.findOne({ author: req.user._id, _id: postId })
+        let post = await Post.findOne({  _id: postId })
 
         if (!post) {
             let error = new Error('404 Page Not Found')
@@ -125,7 +125,7 @@ exports.deletePostGetController = async (req, res, next) => {
     let { postId } = req.params
 
     try {
-        let post = await Post.findOne({ author: req.user._id, _id: postId })
+        let post = await Post.findOne({  _id: postId })
         if (!post) {
             let error = new Error('404 Page Not Found')
             error.status = 404
@@ -145,7 +145,7 @@ exports.deletePostGetController = async (req, res, next) => {
 
 exports.postsGetController = async (req, res, next) => {
     try {
-        let posts = await Post.find({ author: req.user._id })
+        let posts = await Post.find()
         res.render('pages/adminPanel/posts', {
             title: 'My Created Posts',
             posts,
@@ -156,13 +156,33 @@ exports.postsGetController = async (req, res, next) => {
     }
 }
 
+exports.singlePostGetController = async (req, res, next) => {
+    let { postId } = req.params
+    console.log(postId)
+    try {
+        let post = await Post.findById(postId)    
+        if (!post) {
+            let error = new Error('404 Page Not Found')
+            error.status = 404
+            throw error
+        }
+        res.render('pages/singlePost.ejs', {
+            title: 'Blog',
+            post,
+            error: {},
+        })
+
+    } catch (e) {
+        next(e)
+    }
+}
+
 exports.showPostsController = async (req, res, next) => {
     try {
         let posts = await Post.find()
         res.render('pages/know.ejs', {
             title: 'My Created Posts',
-            posts,
-            //flashMessage: Flash.getMessage(req)
+            posts
         })
     } catch (e) {
         next(e)
