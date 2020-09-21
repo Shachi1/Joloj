@@ -1,5 +1,5 @@
 const { validationResult } = require('express-validator')
-const readingTime = require('reading-time')
+// y
 
 //const Flash = require('../utils/Flash')
 const errorFormatter = require('../utils/validationErrorFormatter')
@@ -18,6 +18,7 @@ exports.createPostGetController = (req, res, next) => {
 
 exports.createPostPostController = async (req, res, next) => {
     let { title, body, tags } = req.body
+    console.log(req.body)
     let errors = validationResult(req).formatWith(errorFormatter)
 
     if (!errors.isEmpty()) {
@@ -38,32 +39,24 @@ exports.createPostPostController = async (req, res, next) => {
         tags = tags.map(t => t.trim())
     }
 
-    let readTime = readingTime(body).text
+    // let readTime = readingTime(body).text
 
     let post = new Post({
         title,
         body,
         tags,
         author: req.user._id,
-        thumbnail: '',
-        readTime,
         likes: [],
         dislikes: [],
         comments: []
     })
 
-    if (req.file) {
-        post.thumbnail = `/uploads/${req.file.filename}`
-    }
+    
 
     try {
         let createdPost = await post.save()
-        await Profile.findOneAndUpdate(
-            { user: req.user._id },
-            { $push: { 'posts': createdPost._id } }
-        )
         //req.flash('success', 'Post Created Successfully')
-        return res.redirect(`/posts/edit/${createdPost._id}`)
+        return res.redirect(`/posts`)
     } catch (e) {
         next(e)
     }
@@ -82,7 +75,7 @@ exports.editPostGetController = async (req, res, next) => {
             throw error
         }
 
-        res.render('pages/adminPanel/createPost', {
+        res.render('pages/adminPanel/editPost', {
             title: "Edit Your Post",
             error: {},
             //flashMessage: Flash.getMessage(req),
@@ -116,23 +109,12 @@ exports.editPostPostController = async (req, res, next) => {
             })
         }
 
-        if (tags) {
-            tags = tags.split(',')
-            tags = tags.map(t => t.trim())
-        }
-        let thumbnail = post.thumbnail
-        if (req.file) {
-            thumbnail = req.file.filename
-        }
-
         await Post.findOneAndUpdate(
             { _id: post._id },
-            { $set: { title, body, tags, thumbnail } },
+            { $set: { title, body, tags } },
             { new: true }
         )
-
-        //req.flash('success', 'Post Updated Successfully')
-        res.redirect('/posts/edit/' + post._id)
+        res.redirect('/posts')
 
     } catch (e) {
         next(e)
@@ -151,10 +133,7 @@ exports.deletePostGetController = async (req, res, next) => {
         }
 
         await Post.findOneAndDelete({ _id: postId })
-        await Profile.findOneAndUpdate(
-            { user: req.user._id },
-            { $pull: { 'posts': postId } }
-        )
+        
         //req.flash('success', 'Post Delete Successfully')
         res.redirect('/posts')
 
@@ -167,7 +146,7 @@ exports.deletePostGetController = async (req, res, next) => {
 exports.postsGetController = async (req, res, next) => {
     try {
         let posts = await Post.find({ author: req.user._id })
-        res.render('pages/adminPanel/createPost', {
+        res.render('pages/adminPanel/posts', {
             title: 'My Created Posts',
             posts,
             //flashMessage: Flash.getMessage(req)
