@@ -20,16 +20,18 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="tags">Enter your name</label>
+                        <input type="text" name="tags" id="tags" placeholder="Mr.x" class="form-control"
+                            value="<%= post.tags %>">
+                    </div>
+                    <div class="form-group">
                         <label for="body">Enter Your Post Body</label>
                         <textarea name="body" id="body" class="form-control"><%- post.body %></textarea>
                         <div class="invalid-feedback">
                             <%= error.body %>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="tags"> Enter Some Tags (Max 10) </label>
-                        <input type="text" name="tags" id="tags" placeholder="tag1, tag2, tag3" class="form-control" value="<%= post.tags %>">
-                    </div>
+                    
             </div>
             <input type="submit" class="btn btn-primary" value="Update Post">
             <a class="btn btn-danger" href="/posts/delete/<%= post._id %>"> Delete Post </a>
