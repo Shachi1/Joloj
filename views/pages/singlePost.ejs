@@ -4,6 +4,62 @@
         <h3 class="header1"><%= post.title %></h5>
         <h5>Written by <%= post.tags %></h5>
         <p class="card-text"><%= post.body %></p>
+        <section>
+            <%- post.body %>
+        </section>
+        
+        <section class="my-5">
+            <% if (!user) { %>
+            <button class="btn btn-success btn-sm" disabled>
+                Like ( <%= post.likes.length %> )
+            </button>
+            <button class="btn btn-danger btn-sm" disabled>
+                Dislike ( <%= post.dislikes.length %> )
+            </button>
+            <p class="text-center text-muted mt-5"> To Like And Comment Please <a href="/auth/login">Login</a>
+            </p>
+            <% } else { %>
+            <button class="btn btn-success btn-sm" id="likeBtn" data-post="<%= post._id %>">
+                <%= post.likes.includes(user._id) ? 'Liked' : 'Like' %> ( <%= post.likes.length %> )
+            </button>
+            <button class="btn btn-danger btn-sm" id="dislikeBtn" data-post="<%= post._id %>">
+                <%= post.dislikes.includes(user._id) ? 'Disliked' : 'Dislike' %> ( <%= post.dislikes.length %> )
+            </button>
+            <div class="mt-5">
+                <label for="comment">Leave A Comment</label>
+                <input type="text" class="form-control" id="comment" placeholder="Press Enter to Submit"
+                    data-post="<%= post._id %>">
+            </div>
+            <div class="mt-5" id="comment-holder">
+                <% if (post.comments.length === 0) { %>
+                <p class="text-muted text-center">There is No Comment</p>
+                <% } else { %>
+                <% for (let comment of post.comments.reverse()) { %>
+                <div class="media border">
+                    <div class="media-body my-3">
+                        <p> <%= comment.body %> </p>
+                        <div name="replies">
+                            <% if (comment.replies.length > 0) { %>
+                            <% for (let reply of comment.replies) { %>
+                            <div class="media mt-3">
+                                <div class="media-body">
+                                    <p><%= reply.body %></p>
+                                </div>
+                            </div>
+                            <% } %>
+                            <% } %>
+                        </div>
+                        <div class="my-3">
+                            <input type="text" class="form-control" placeholder="Press Enter to Reply" name="reply"
+                                data-comment="<%= comment._id %>">
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+                <% } %>
+            </div>
+            <% } %>
+        </section>
         
     </div>
 </div>
