@@ -6,8 +6,8 @@ const adminRoutes = require('./adminRoute')
 const upload = require('../middleware/uploadMiddleware')
 const fishDocRoutes = require('./fishDocRoutes')
 const messageRoutes = require('./messageRoute')
-const Contact = require('../models/fishDoctor')
 const mongoose=require('mongoose')
+const { render } = require('ejs')
 
 module.exports = app => {
     
@@ -71,7 +71,8 @@ module.exports = app => {
 
     app.get('/show-message', (req, res) => {
         mongoose.model('message').find(function(err,messages){
-            res.send(messages)
+            // res.send(messages)
+            res.render('/pages/adminPanel/show-message.ejs',{messages})
         })
     })
 }

@@ -1,3 +1,7 @@
+
+// const mongoose = require('mongoose')
+
+
 const Message = require('../models/message')
 
 
@@ -118,3 +122,11 @@ exports.messagePostController = async (req, res, next) => {
         // return next(err)
     }
 }
+
+// exports.messageGetController = (req, res, next) => {
+//     mongoose.model('message').find(function(err,messages){
+//         // res.send(messages)
+//         res.render('/pages/adminPanel/show-message.ejs',{messages})
+//     })
+    
+// }
