@@ -8,7 +8,6 @@ const fishDocRoutes = require('./fishDocRoutes')
 const messageRoutes = require('./messageRoute')
 const mongoose=require('mongoose')
 const Contact = require('../models/fishDoctor')
-// const Post = require('../models/post')
 const { render } = require('ejs')
 
 
@@ -29,9 +28,6 @@ module.exports = app => {
     app.get('/contact-us', (req, res) => {
         res.render('pages/contact-us.ejs', { title: 'Contact us' })
     })
-    // app.get('/dashboard', (req, res) => {
-    //     res.render('pages/dashboard.ejs', { title: 'Data Dashboard' })
-    // })
     app.get('/fish-doctor', (req, res) =>{
         Contact.find()
             .then(contacts => {
@@ -49,22 +45,6 @@ module.exports = app => {
             })
         })
     
-    // app.get('/knowledge-box', (req, res) => {
-    //     Post.find()
-    //         .then(posts => {
-    //             res.render('pages/know', {
-    //                 title: 'knowledge-box',
-    //                 posts,
-    //                 error: {}
-    //             })
-    //         })
-    //         .catch(e => {
-    //             console.log(e)
-    //             res.json({
-    //                 message: 'Error Occurred'
-    //             })
-    //         })
-    // })
     
 
     app.get('/admin-panel', (req, res) => {
