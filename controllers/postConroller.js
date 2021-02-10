@@ -120,12 +120,11 @@ exports.editPostPostController = async (req, res, next) => {
         next(e)
     }
 }
-
 exports.deletePostGetController = async (req, res, next) => {
     let { postId } = req.params
 
     try {
-        let post = await Post.findOne({  _id: postId })
+        let post = await Post.findOne({ _id: postId })
         if (!post) {
             let error = new Error('404 Page Not Found')
             error.status = 404
@@ -133,7 +132,7 @@ exports.deletePostGetController = async (req, res, next) => {
         }
 
         await Post.findOneAndDelete({ _id: postId })
-        
+
         //req.flash('success', 'Post Delete Successfully')
         res.redirect('/posts')
 
@@ -141,7 +140,6 @@ exports.deletePostGetController = async (req, res, next) => {
         next(e)
     }
 }
-
 
 exports.postsGetController = async (req, res, next) => {
     try {

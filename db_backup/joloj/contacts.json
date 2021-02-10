@@ -1,0 +1,81 @@
+{ 
+    "_id" : ObjectId("5f66d9d51716dc1b789a10d5"), 
+    "name" : "Nurnaby", 
+    "bio" : "Mbbs", 
+    "phone" : "018241141241", 
+    "email" : "enigma@gmail.com", 
+    "workZone" : "Dhaka", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5f66db371716dc1b789a10d6"), 
+    "name" : "Shachi", 
+    "bio" : "Mbbs", 
+    "phone" : "01824114124", 
+    "email" : "mehjabeen@gmail.com", 
+    "workZone" : "Dhaka", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5f66dd1d950e97160498c7fb"), 
+    "name" : "Shachi", 
+    "bio" : "Mbbs", 
+    "phone" : "01824114124", 
+    "email" : "mehjabeen@gmail.com", 
+    "workZone" : "Dhaka", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5f66dd2c950e97160498c7fc"), 
+    "name" : "Shachi1", 
+    "bio" : "Mbbs", 
+    "phone" : "01824114124", 
+    "email" : "enigma2@gmail.com", 
+    "workZone" : "Dhaka", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5f671db0dfa27e42f0347fb9"), 
+    "name" : "Nurnaby1", 
+    "bio" : "Mbbs", 
+    "phone" : "01824114124", 
+    "email" : "admin2@gmail.com", 
+    "workZone" : "undefinedcb", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5f6721f5d083eb289cec9298"), 
+    "name" : "Sajid", 
+    "bio" : "fcps", 
+    "phone" : "015213752758", 
+    "email" : "sajid@joloj.com", 
+    "workZone" : "Barishal", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5f6b29337644963f985430eb"), 
+    "name" : "Old doctor", 
+    "bio" : "abc", 
+    "phone" : "015214246284", 
+    "email" : "abc@gmail.colm", 
+    "workZone" : "sfjlsjf", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5f6c1649d747ea39ac94ab56"), 
+    "name" : "Edited Doctor", 
+    "bio" : "mbb", 
+    "phone" : "01521439054", 
+    "email" : "new@gmail.com", 
+    "workZone" : "undefined", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5f6c1ec0974da53914bef649"), 
+    "name" : "New", 
+    "bio" : "new bio", 
+    "phone" : "01824114124", 
+    "email" : "enigma2@gmail.com", 
+    "workZone" : "Dhaka", 
+    "__v" : NumberInt(0)
+}

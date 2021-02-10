@@ -22,7 +22,7 @@ router.get('/edit/:postId', isAuthenticated, editPostGetController)
 router.post('/edit/:postId', isAuthenticated, postValidator, editPostPostController)
 
 router.get('/delete/:postId', isAuthenticated, deletePostGetController)
-router.get('/blogs/:postId', isAuthenticated, singlePostGetController)
+router.get('/blogs/:postId',  singlePostGetController)
 router.get('/', isAuthenticated, postsGetController)
 router.get('/blogs',showPostsController)
 
