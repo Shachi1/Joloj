@@ -1,0 +1,67 @@
+<%- include('../partials/head.ejs') %>
+
+    <!-- login form -->
+    <div id="logreg-forms">
+        <form action="/login" method="POST">
+            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Log in</h1>
+            <div class="form-group">
+                <input type="email" name="email" id="email" class="form-control <%= error.email ? 'is-invalid' : '' %>" placeholder="Email" autofocus="">
+                <div class="invalid-feedback">
+                    <%= error.email && error.email %>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" id="password" class="form-control <%= error.password ? 'is-invalid' : '' %>" placeholder="Password">
+                <div class="invalid-feedback">
+                    <%= error.password && error.password %>
+                </div>
+            </div>
+            <!-- <input type="submit" class="btn btn-primary btn-block" value="Signup"> -->
+            <button type="submit" class="btn btn-primary btn-block">
+                <i class="fas fa-sign-in-alt"></i> Log in
+            </button>
+            
+            <hr>
+            <p style="text-align: center">Don't have an account?</p> 
+            <br>
+            <button onclick="window.location.href='/signup'" class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Sign up
+                New Account</button>
+        </form>
+    
+       <!-- <form action="/reset/password/" class="form-reset">
+            <input type="email" id="resetEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+            <button class="btn btn-primary btn-block" type="submit">Reset Password</button>
+            <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
+        </form>
+    
+         <form action="/signup/" class="form-signup">
+            <div class="social-login">
+                <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Sign up
+                        with Facebook</span> </button>
+            </div>
+            <div class="social-login">
+                <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Sign up
+                        with Google+</span> </button>
+            </div>
+    
+            <p style="text-align:center">OR</p>
+    
+            <input type="text" id="user-name" class="form-control" placeholder="Full name" required="" autofocus="">
+            <input type="email" id="user-email" class="form-control" placeholder="Email address" required autofocus="">
+            <input type="password" id="user-pass" class="form-control" placeholder="Password" required autofocus="">
+            <input type="password" id="user-repeatpass" class="form-control" placeholder="Repeat Password" required
+                autofocus="">
+    
+            <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Sign Up</button>
+            <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Back</a>
+        </form>
+        <br> -->
+    
+    </div>
+    <br><br><br>
+<%- include('../partials/footer.ejs') %>
+</body>
+
+</html>
+
+

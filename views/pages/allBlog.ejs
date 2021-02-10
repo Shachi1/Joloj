@@ -1,0 +1,38 @@
+<%- include('../partials/head.ejs') %>
+<div class="container blog-sec" style="display: block;">
+        <div class="row ">
+            <% for (let post of posts) { %>
+            <div id="explorer" class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h3 class="card-title"><%= post.title %></h5>
+                    <h4>Posted by<%= post.tags %></h4>
+                    <br>
+                    <a href="/posts/blogs/<%= post._id %>">Read more</a>
+                    <!-- <button id="singlePost/:post">Read more</button> -->
+                </div>
+                
+                <!-- <button >Click me</button> -->
+            </div>
+            <% } %>
+        </div>
+        <!-- <button class="custom-btn text-center"><a href="/posts/create">Create your own post</a> -->
+            
+        </button>
+        <br>
+    </div>
+    
+
+    
+<%- include('../partials/footer.ejs') %>
+<!-- <script>
+    document.getElementById("readMore").onclick=()=>{
+        document.getElementById("explorer").style.display = "none";
+        document.getElementById("singleBlog").style.display = "block";
+        
+        
+    }
+    
+</script> -->
+</body>
+
+</html>

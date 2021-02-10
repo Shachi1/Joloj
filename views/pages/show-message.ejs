@@ -1,0 +1,35 @@
+<%- include('../partials/head.ejs') %>
+
+<div class="container contact-form">
+    <h4>Your messages</h4>
+    <br>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let message of messages) { %>
+                <tr>
+                    <td><%= message.name %></td>
+                    <td><%= message.email %></td>
+                    <td><%= message.phone %></td>
+                    <td><%= message.message %></td>
+                    
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>    
+</div>
+
+<%- include('../partials/footer.ejs') %>
+
+</body>
+
+</html>

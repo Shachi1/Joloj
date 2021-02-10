@@ -1,0 +1,39 @@
+<%- include('../partials/head.ejs') %>
+<div class="container contact-form">
+    <h4 class="header1">Find nearby Fish doctor</h4>
+    <!-- select your zone -->
+    <div class="container">
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Bio</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Working area</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let contact of contacts) { %>
+                <tr>
+                    <td><%= contact.name %></td>
+                    <td><%= contact.bio %></td>
+                    <td><%= contact.phone %></td>
+                    <td><%= contact.email %></td>
+                    <td><%= contact.workZone %></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+    
+</div>
+
+
+
+<%- include('../partials/footer.ejs') %>
+
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Update Fish doctor list</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="my-4">
+            <h4>Update Fish doctor list</h4>
+            <form action="/doctors-list" class="form-inline" method="POST" id="my-form">
+                <div class="form-group mr-3">
+                    <input type="text" name="name" placeholder="Name"
+                        class="form-control <%= error.name ? 'is-invalid': '' %>">
+                    <div class="invalid-feedback">
+                        <%= error.name %>
+                    </div>
+                </div>
+                <div class="form-group mr-3">
+                    <input type="text" name="bio" placeholder="bio" class="form-control <%= error.bio ? 'is-invalid': '' %>">
+                    <div class="invalid-feedback">
+                        <%= error.name %>
+                    </div>
+                </div>
+                <div class="form-group mr-3">
+                    <input type="text" name="phone" placeholder="Phone"
+                        class="form-control <%= error.phone ? 'is-invalid': '' %>">
+                    <div class="invalid-feedback">
+                        <%= error.phone %>
+                    </div>
+                </div>
+                <div class="form-group mr-3">
+                    <input type="email" name="email" placeholder="Email"
+                        class="form-control <%= error.email ? 'is-invalid': '' %>">
+                    <div class="invalid-feedback">
+                        <%= error.email %>
+                    </div>
+                </div>
+                <div class="form-group mr-3">
+                    <input type="text" name="workZone" placeholder="Working area" class="form-control <%= error.workZone ? 'is-invalid': '' %>">
+                    <div class="invalid-feedback">
+                        <%= error.workZone %>
+                    </div>
+                </div>
+                <div class="form-group mr-3">
+                    <input type="hidden" name="id">
+                </div>
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </form>
+        </div>
+        <div>
+            <h4>Your Contacts</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Bio</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Working area</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let contact of contacts) { %>
+                    <tr>
+                        <td><%= contact.name %></td>
+                        <td><%= contact.bio %></td>
+                        <td><%= contact.phone %></td>
+                        <td><%= contact.email %></td>
+                        <td><%= contact.workZone %></td>
+                        <td>
+                            <button class="btn btn-warning btn-sm edit-btn" data-name="<%= contact.name %>"
+                                data-phone="<%= contact.phone %>" data-email="<%= contact.email %>"
+                                data-id="<%= contact._id %>">
+                                Edit
+                            </button>
+                            <a href="/contacts/delete/<%= contact._id %>" class="btn btn-danger btn-sm">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+        </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        </script>
+    <script>
+        window.onload = function () {
+            let editBtns = document.getElementsByClassName('edit-btn')
+            let form = document.getElementById('my-form')
+
+                ;[...editBtns].forEach(btn => {
+                    btn.addEventListener('click', function (e) {
+                        let { name, bio, phone, email, workZone, id } = e.target.dataset
+                        form[0].value = name,
+                            form[1].value = bio
+                        form[2].value = phone
+                        form[3].value = email
+                        form[4].value = workZone
+                        form[5].value = id
+                        form[6].value = 'Update'
+                    })
+                })
+        }
+    </script>
+</body>
+
+</html>
