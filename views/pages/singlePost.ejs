@@ -19,7 +19,7 @@
             <p class="text-center text-muted mt-5"> To Like And Comment Please <a href="/auth/login">Login</a>
             </p>
             <% } else { %>
-            <button class="btn btn-success btn-sm" id="likeBtn" data-post="<%= post._id %>">
+            <!-- <button class="btn btn-success btn-sm" id="likeBtn" data-post="<%= post._id %>">
                 <%= post.likes.includes(user._id) ? 'Liked' : 'Like' %> ( <%= post.likes.length %> )
             </button>
             <button class="btn btn-danger btn-sm" id="dislikeBtn" data-post="<%= post._id %>">
@@ -29,8 +29,8 @@
                 <label for="comment">Leave A Comment</label>
                 <input type="text" class="form-control" id="comment" placeholder="Press Enter to Submit"
                     data-post="<%= post._id %>">
-            </div>
-            <div class="mt-5" id="comment-holder">
+            </div> -->
+            <!-- <div class="mt-5" id="comment-holder">
                 <% if (post.comments.length === 0) { %>
                 <p class="text-muted text-center">There is No Comment</p>
                 <% } else { %>
@@ -57,7 +57,7 @@
                 </div>
                 <% } %>
                 <% } %>
-            </div>
+            </div> -->
             <% } %>
         </section>
         
