@@ -16,10 +16,10 @@ Features:
 
 
 Member's Contribution:
-    17-01-04-151: Knowledge box, fish doctor, admin panel, UI
-    17-01-04-153: Authentication, validation, admin panel, Dashboard, Contact us, signin, login, logout, UI
+    Nurnaby Siddiqui: Knowledge box, fish doctor, admin panel, UI
+    Mehjabeen Shachi: Authentication, validation, admin panel, Dashboard, Contact us, signin, login, logout, UI
 
 
-Instruction:
-    npm i
-    npm start
+Installation:
+npm i
+npm start
